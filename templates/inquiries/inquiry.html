@@ -6,23 +6,27 @@
 {% block content %}
 <section class="inquiry-section">
     <div class="inquiry-layout">
+
         <div class="inquiry-artwork">
             {% if artwork.image %}
                 <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+            {% else %}
+                <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
             {% endif %}
-            <div class="card-body">
-                <span class="card-tag">{{ artwork.medium }} · {{ artwork.year }}</span>
+            <div class="card-body" style="padding-left:0;padding-right:0;">
+                <span class="card-tag">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</span>
                 <h2 class="card-name">{{ artwork.title }}</h2>
                 <p class="card-city">{{ artwork.artist.name }}</p>
                 {% if artwork.price %}
-                    <p class="artwork-price">{{ artwork.price }}</p>
+                    <p class="shop-price" style="margin-top:8px;">{{ artwork.price }}</p>
                 {% endif %}
             </div>
         </div>
 
         <div class="inquiry-form">
-            <h1 class="artist-name">Запрос о работе</h1>
-            <p class="artist-bio">Оставьте контакт и мы свяжемся с вами в течение 24 часов.</p>
+            <span class="page-tag">Запрос о работе</span>
+            <h1 class="artist-name" style="margin-bottom:12px;">Свяжитесь<br>с галереей</h1>
+            <p class="artist-bio" style="margin-bottom:0;">Оставьте контакт — мы ответим в течение 24 часов.</p>
 
             <form method="POST" class="form">
                 {% csrf_token %}
@@ -38,9 +42,10 @@
                     <label class="form-label">Сообщение</label>
                     <textarea name="message" class="form-input form-textarea" placeholder="Вопрос или комментарий..."></textarea>
                 </div>
-                <button type="submit" class="form-btn">Отправить запрос</button>
+                <button type="submit" class="btn-solid">Отправить запрос</button>
             </form>
         </div>
+
     </div>
 </section>
 {% endblock %}

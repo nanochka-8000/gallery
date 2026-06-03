@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}АК Галерея{% endblock %}</title>
+    <title>{% block title %}АК Галерея — TUMAR ART GROUP{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -12,11 +15,14 @@
     <nav class="navbar">
         <a href="/" class="nav-logo">АК</a>
         <div class="nav-links">
-            <a href="/artists/">Художники</a>
-            <a href="/exhibitions/">Выставки</a>
-            <a href="/shop/">Магазин</a>
-            <a href="/about/">О галерее</a>
+            <a href="/artists/"   class="nav-link {% if '/artists/'    in request.path %}nav-link--active{% endif %}">Художники</a>
+            <a href="/exhibitions/" class="nav-link {% if '/exhibitions/' in request.path %}nav-link--active{% endif %}">Выставки</a>
+            <a href="/shop/"      class="nav-link {% if '/shop/'       in request.path %}nav-link--active{% endif %}">Магазин</a>
+            <a href="/about/"     class="nav-link {% if '/about/'      in request.path %}nav-link--active{% endif %}">О галерее</a>
         </div>
+        <button class="nav-menu-btn" onclick="this.closest('nav').classList.toggle('nav--open')">
+            <span></span><span></span>
+        </button>
     </nav>
 
     <main>
@@ -25,7 +31,25 @@
     </main>
 
     <footer class="footer">
-        <p>© 2025 АК Галерея</p>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <span class="footer-logo">АК</span>
+                <p class="footer-sub">TUMAR ART GROUP</p>
+            </div>
+            <div class="footer-col">
+                <a href="/artists/" class="footer-link">Художники</a>
+                <a href="/exhibitions/" class="footer-link">Выставки</a>
+                <a href="/shop/" class="footer-link">Магазин</a>
+                <a href="/about/" class="footer-link">О галерее</a>
+            </div>
+            <div class="footer-col">
+                <p class="footer-text">Бишкек, Кыргызстан</p>
+                <a href="mailto:info@akgallery.kg" class="footer-link">info@akgallery.kg</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 АК Галерея — TUMAR ART GROUP</p>
+        </div>
     </footer>
 
 </body>

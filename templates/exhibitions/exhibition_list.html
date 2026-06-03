@@ -4,11 +4,17 @@
 {% block title %}Выставки — АК Галерея{% endblock %}
 
 {% block content %}
-<section class="exhibitions-section">
+<div class="page-header">
+    <span class="page-tag">TUMAR ART GROUP</span>
+    <h1 class="page-title">Выставки</h1>
+</div>
 
+<section class="exhibitions-section">
     {% if current %}
     <div class="exh-block">
-        <h1 class="page-title">Текущие выставки</h1>
+        <div class="section-header">
+            <span class="section-label">Текущие</span>
+        </div>
         <div class="exhibitions-grid">
             {% for exh in current %}
             <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
@@ -18,7 +24,7 @@
                     <div class="exh-no-image"></div>
                 {% endif %}
                 <div class="card-body">
-                    <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                    <span class="card-tag">{{ exh.start_date|date:"d M Y" }} — {{ exh.end_date|date:"d M Y" }}</span>
                     <h2 class="card-name">{{ exh.title }}</h2>
                     <p class="card-city">{{ exh.location }}</p>
                 </div>
@@ -30,7 +36,9 @@
 
     {% if upcoming %}
     <div class="exh-block">
-        <h2 class="page-title">Предстоящие</h2>
+        <div class="section-header">
+            <span class="section-label">Предстоящие</span>
+        </div>
         <div class="exhibitions-grid">
             {% for exh in upcoming %}
             <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
@@ -40,7 +48,7 @@
                     <div class="exh-no-image"></div>
                 {% endif %}
                 <div class="card-body">
-                    <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                    <span class="card-tag">{{ exh.start_date|date:"d M Y" }} — {{ exh.end_date|date:"d M Y" }}</span>
                     <h2 class="card-name">{{ exh.title }}</h2>
                     <p class="card-city">{{ exh.location }}</p>
                 </div>
@@ -52,7 +60,9 @@
 
     {% if past %}
     <div class="exh-block">
-        <h2 class="page-title">Архив</h2>
+        <div class="section-header">
+            <span class="section-label">Архив</span>
+        </div>
         <div class="exhibitions-grid">
             {% for exh in past %}
             <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
@@ -62,7 +72,7 @@
                     <div class="exh-no-image"></div>
                 {% endif %}
                 <div class="card-body">
-                    <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                    <span class="card-tag">{{ exh.start_date|date:"d M Y" }} — {{ exh.end_date|date:"d M Y" }}</span>
                     <h2 class="card-name">{{ exh.title }}</h2>
                     <p class="card-city">{{ exh.location }}</p>
                 </div>
@@ -72,5 +82,8 @@
     </div>
     {% endif %}
 
+    {% if not current and not upcoming and not past %}
+    <p class="empty-state">Выставки появятся здесь после добавления через админ-панель.</p>
+    {% endif %}
 </section>
 {% endblock %}

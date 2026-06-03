@@ -4,13 +4,18 @@
 {% block title %}Художники — АК Галерея{% endblock %}
 
 {% block content %}
-<section class="artists-section">
+<div class="page-header">
+    <span class="page-tag">TUMAR ART GROUP</span>
     <h1 class="page-title">Художники</h1>
+</div>
+<section class="artists-section">
     <div class="artists-grid">
         {% for artist in artists %}
         <a href="/artists/{{ artist.id }}/" class="artist-card">
             {% if artist.photo %}
                 <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+            {% else %}
+                <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>
             {% endif %}
             <div class="card-body">
                 <span class="card-tag">{{ artist.medium }}</span>
@@ -18,6 +23,8 @@
                 <p class="card-city">{{ artist.city }}</p>
             </div>
         </a>
+        {% empty %}
+        <p class="empty-state">Художники появятся здесь после добавления через админ-панель.</p>
         {% endfor %}
     </div>
 </section>

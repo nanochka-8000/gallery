@@ -4,9 +4,12 @@
 {% block title %}Магазин — АК Галерея{% endblock %}
 
 {% block content %}
-<section class="shop-section">
+<div class="page-header">
+    <span class="page-tag">TUMAR ART GROUP</span>
     <h1 class="page-title">Магазин</h1>
+</div>
 
+<section class="shop-section">
     <div class="shop-filters">
         <a href="/shop/" class="filter-btn {% if not active_category %}filter-btn--active{% endif %}">Все</a>
         {% for key, label in categories %}

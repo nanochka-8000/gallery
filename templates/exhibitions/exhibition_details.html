@@ -7,16 +7,20 @@
 <section class="exhibition-detail">
 
     {% if exhibition.cover_image %}
-        <div class="exh-cover">
-            <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }}">
-        </div>
+    <div class="exh-cover">
+        <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }}">
+    </div>
     {% endif %}
 
     <div class="exh-info">
-        <span class="card-tag">{{ exhibition.get_status_display }} · {{ exhibition.start_date }} — {{ exhibition.end_date }}</span>
+        <span class="page-tag">{{ exhibition.get_status_display }} · {{ exhibition.start_date|date:"d M Y" }} — {{ exhibition.end_date|date:"d M Y" }}</span>
         <h1 class="artist-name">{{ exhibition.title }}</h1>
-        <p class="artist-city">{{ exhibition.location }}</p>
-        <p class="artist-bio">{{ exhibition.description }}</p>
+        {% if exhibition.location %}
+            <p class="artist-city">{{ exhibition.location }}</p>
+        {% endif %}
+        {% if exhibition.description %}
+            <p class="artist-bio" style="margin-top:24px;">{{ exhibition.description }}</p>
+        {% endif %}
     </div>
 
     {% if exhibition.artists.all %}
@@ -27,6 +31,8 @@
             <a href="/artists/{{ artist.id }}/" class="artist-card">
                 {% if artist.photo %}
                     <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+                {% else %}
+                    <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>
                 {% endif %}
                 <div class="card-body">
                     <span class="card-tag">{{ artist.medium }}</span>
@@ -47,10 +53,12 @@
             <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
                 {% if artwork.image %}
                     <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+                {% else %}
+                    <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
                 {% endif %}
                 <div class="card-body">
                     <h3 class="artwork-title">{{ artwork.title }}</h3>
-                    <p class="artwork-meta">{{ artwork.medium }} · {{ artwork.year }}</p>
+                    <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
                 </div>
             </a>
             {% endfor %}
