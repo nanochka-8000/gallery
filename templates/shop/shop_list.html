@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Магазин — АК Галерея{% endblock %}
+
+{% block content %}
+<section class="shop-section">
+    <h1 class="page-title">Магазин</h1>
+
+    <div class="shop-filters">
+        <a href="/shop/" class="filter-btn {% if not active_category %}filter-btn--active{% endif %}">Все</a>
+        {% for key, label in categories %}
+        <a href="/shop/?category={{ key }}"
+           class="filter-btn {% if active_category == key %}filter-btn--active{% endif %}">{{ label }}</a>
+        {% endfor %}
+    </div>
+
+    {% if products %}
+    <div class="shop-grid">
+        {% for product in products %}
+        <a href="/shop/{{ product.id }}/" class="shop-card">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.title }}">
+            {% else %}
+                <div class="shop-no-image"></div>
+            {% endif %}
+            <div class="card-body">
+                <span class="card-tag">{{ product.get_category_display }}{% if product.artist_name %} · {{ product.artist_name }}{% endif %}</span>
+                <h2 class="card-name">{{ product.title }}</h2>
+                <p class="shop-price">{{ product.price }} {{ product.currency }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-state">В этой категории пока нет товаров.</p>
+    {% endif %}
+</section>
+{% endblock %}

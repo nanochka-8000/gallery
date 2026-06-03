@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ exhibition.title }} — АК Галерея{% endblock %}
+
+{% block content %}
+<section class="exhibition-detail">
+
+    {% if exhibition.cover_image %}
+        <div class="exh-cover">
+            <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }}">
+        </div>
+    {% endif %}
+
+    <div class="exh-info">
+        <span class="card-tag">{{ exhibition.get_status_display }} · {{ exhibition.start_date }} — {{ exhibition.end_date }}</span>
+        <h1 class="artist-name">{{ exhibition.title }}</h1>
+        <p class="artist-city">{{ exhibition.location }}</p>
+        <p class="artist-bio">{{ exhibition.description }}</p>
+    </div>
+
+    {% if exhibition.artists.all %}
+    <div class="exh-artists">
+        <h2 class="section-title">Художники</h2>
+        <div class="artists-grid">
+            {% for artist in exhibition.artists.all %}
+            <a href="/artists/{{ artist.id }}/" class="artist-card">
+                {% if artist.photo %}
+                    <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <span class="card-tag">{{ artist.medium }}</span>
+                    <h2 class="card-name">{{ artist.name }}</h2>
+                    <p class="card-city">{{ artist.city }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if exhibition.artworks.all %}
+    <div class="exh-artworks">
+        <h2 class="section-title">Работы</h2>
+        <div class="artworks-grid">
+            {% for artwork in exhibition.artworks.all %}
+            <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
+                {% if artwork.image %}
+                    <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h3 class="artwork-title">{{ artwork.title }}</h3>
+                    <p class="artwork-meta">{{ artwork.medium }} · {{ artwork.year }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</section>
+{% endblock %}

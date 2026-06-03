@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Художники — АК Галерея{% endblock %}
+
+{% block content %}
+<section class="artists-section">
+    <h1 class="page-title">Художники</h1>
+    <div class="artists-grid">
+        {% for artist in artists %}
+        <a href="/artists/{{ artist.id }}/" class="artist-card">
+            {% if artist.photo %}
+                <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+            {% endif %}
+            <div class="card-body">
+                <span class="card-tag">{{ artist.medium }}</span>
+                <h2 class="card-name">{{ artist.name }}</h2>
+                <p class="card-city">{{ artist.city }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

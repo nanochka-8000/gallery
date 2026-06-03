@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ artwork.title }} — АК Галерея{% endblock %}
+
+{% block content %}
+<section class="artwork-detail">
+    <div class="artwork-hero">
+        {% if artwork.image %}
+            <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}" class="artwork-image">
+        {% endif %}
+        <div class="artwork-info">
+            <a href="/artists/{{ artwork.artist.id }}/" class="back-link">← {{ artwork.artist.name }}</a>
+            <h1 class="artwork-title">{{ artwork.title }}</h1>
+            <div class="artwork-meta-block">
+                <p class="artwork-meta">{{ artwork.medium }}</p>
+                <p class="artwork-meta">{{ artwork.year }}</p>
+                <p class="artwork-meta">{{ artwork.dimensions }}</p>
+                {% if artwork.price %}
+                    <p class="artwork-price">{{ artwork.price }}</p>
+                {% endif %}
+            </div>
+            <p class="artwork-description">{{ artwork.description }}</p>
+            <div class="qr-info">
+                <a href="/inquiry/{{ artwork.id }}/" class="inquiry-btn">Узнать о покупке →</a>
+                <p class="qr-note">Эта страница открывается по QR-коду под работой</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

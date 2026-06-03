@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.title }} — АК Магазин{% endblock %}
+
+{% block content %}
+<section class="artwork-detail">
+    <div class="artwork-hero">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="artwork-image">
+        {% else %}
+            <div class="shop-no-image shop-no-image--large"></div>
+        {% endif %}
+
+        <div class="artwork-info">
+            <a href="/shop/" class="back-link">← Магазин</a>
+            <span class="card-tag">{{ product.get_category_display }}</span>
+            <h1 class="artwork-title">{{ product.title }}</h1>
+
+            <div class="artwork-meta-block">
+                {% if product.artist_name %}
+                    <p class="artwork-meta">{{ product.artist_name }}</p>
+                {% endif %}
+                <p class="artwork-price">{{ product.price }} {{ product.currency }}</p>
+            </div>
+
+            {% if product.description %}
+                <p class="artwork-description">{{ product.description }}</p>
+            {% endif %}
+
+            <div class="qr-info">
+                <a href="mailto:info@akgallery.kg?subject=Покупка: {{ product.title }}" class="inquiry-btn">
+                    Купить / Узнать подробнее →
+                </a>
+                <p class="qr-note" style="margin-top:12px;">Напишите нам — мы ответим в течение 24 часов</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

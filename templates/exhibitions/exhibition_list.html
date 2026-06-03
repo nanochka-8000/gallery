@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Выставки — АК Галерея{% endblock %}
+
+{% block content %}
+<section class="exhibitions-section">
+
+    {% if current %}
+    <div class="exh-block">
+        <h1 class="page-title">Текущие выставки</h1>
+        <div class="exhibitions-grid">
+            {% for exh in current %}
+            <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
+                {% if exh.cover_image %}
+                    <img src="{{ exh.cover_image.url }}" alt="{{ exh.title }}">
+                {% else %}
+                    <div class="exh-no-image"></div>
+                {% endif %}
+                <div class="card-body">
+                    <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                    <h2 class="card-name">{{ exh.title }}</h2>
+                    <p class="card-city">{{ exh.location }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if upcoming %}
+    <div class="exh-block">
+        <h2 class="page-title">Предстоящие</h2>
+        <div class="exhibitions-grid">
+            {% for exh in upcoming %}
+            <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
+                {% if exh.cover_image %}
+                    <img src="{{ exh.cover_image.url }}" alt="{{ exh.title }}">
+                {% else %}
+                    <div class="exh-no-image"></div>
+                {% endif %}
+                <div class="card-body">
+                    <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                    <h2 class="card-name">{{ exh.title }}</h2>
+                    <p class="card-city">{{ exh.location }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if past %}
+    <div class="exh-block">
+        <h2 class="page-title">Архив</h2>
+        <div class="exhibitions-grid">
+            {% for exh in past %}
+            <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
+                {% if exh.cover_image %}
+                    <img src="{{ exh.cover_image.url }}" alt="{{ exh.title }}">
+                {% else %}
+                    <div class="exh-no-image"></div>
+                {% endif %}
+                <div class="card-body">
+                    <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                    <h2 class="card-name">{{ exh.title }}</h2>
+                    <p class="card-city">{{ exh.location }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</section>
+{% endblock %}

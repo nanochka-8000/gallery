@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}АК Галерея{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="nav-logo">АК</a>
+        <div class="nav-links">
+            <a href="/artists/">Художники</a>
+            <a href="/exhibitions/">Выставки</a>
+            <a href="/shop/">Магазин</a>
+            <a href="/about/">О галерее</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 АК Галерея</p>
+    </footer>
+
+</body>
+</html>

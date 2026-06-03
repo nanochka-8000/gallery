@@ -1,0 +1,638 @@
+/* ===== ОСНОВНЫЕ НАСТРОЙКИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'DM Sans', sans-serif;
+    background-color: #FFFFFF;
+    color: #2A2A2A;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    border-bottom: 0.5px solid #E0E0E0;
+    position: sticky;
+    top: 0;
+    background: #FFFFFF;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: #0D0D0D;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8C8C8C;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #C8A97E;
+}
+
+/* ===== СПИСОК ХУДОЖНИКОВ ===== */
+.artists-section {
+    padding: 64px 48px;
+}
+
+.page-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8C8C8C;
+    margin-bottom: 48px;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.artist-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.artist-card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.artist-card:hover img {
+    opacity: 0.85;
+}
+
+/* ===== КАРТОЧКИ ===== */
+.card-body {
+    padding: 16px 0;
+}
+
+.card-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8C8C8C;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.card-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0D0D0D;
+    margin-bottom: 4px;
+}
+
+.card-city {
+    font-size: 13px;
+    color: #8C8C8C;
+}
+
+/* ===== СТРАНИЦА ХУДОЖНИКА ===== */
+.artist-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 64px 48px;
+    align-items: start;
+}
+
+.artist-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+.artist-name {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin: 12px 0 8px;
+}
+
+.artist-city {
+    font-size: 13px;
+    color: #8C8C8C;
+    margin-bottom: 24px;
+}
+
+.artist-bio {
+    font-size: 15px;
+    color: #2A2A2A;
+    line-height: 1.8;
+}
+
+.artworks-section {
+    padding: 0 48px 80px;
+}
+
+.section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8C8C8C;
+    margin-bottom: 40px;
+    padding-top: 48px;
+    border-top: 0.5px solid #E0E0E0;
+}
+
+.artworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 32px;
+}
+
+.artwork-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.artwork-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.artwork-card:hover img {
+    opacity: 0.85;
+}
+
+.artwork-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 12px 0 4px;
+}
+
+.artwork-meta {
+    font-size: 12px;
+    color: #8C8C8C;
+}
+
+/* ===== СТРАНИЦА РАБОТЫ ===== */
+.artwork-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 64px 48px;
+    align-items: start;
+    min-height: 80vh;
+}
+
+.artwork-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+.back-link {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8C8C8C;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #C8A97E;
+}
+
+.artwork-meta-block {
+    margin: 20px 0 28px;
+    padding: 20px 0;
+    border-top: 0.5px solid #E0E0E0;
+    border-bottom: 0.5px solid #E0E0E0;
+}
+
+.artwork-meta-block .artwork-meta {
+    margin-bottom: 6px;
+}
+
+.artwork-price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0D0D0D;
+    margin-top: 12px;
+}
+
+.artwork-description {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2A2A2A;
+}
+
+.qr-info {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 0.5px solid #E0E0E0;
+}
+
+.qr-note {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #C8A97E;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    padding: 32px 48px;
+    border-top: 0.5px solid #E0E0E0;
+    font-size: 12px;
+    color: #8C8C8C;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px 24px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .artists-section {
+        padding: 40px 24px;
+    }
+
+    .artist-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 24px;
+    }
+
+    .artwork-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 24px;
+    }
+
+    .artworks-section {
+        padding: 0 24px 60px;
+    }
+
+    .artists-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 24px;
+    }
+}
+
+/* ===== ВЫСТАВКИ ===== */
+.exhibitions-section {
+    padding: 64px 48px;
+}
+
+.exh-block {
+    margin-bottom: 80px;
+}
+
+.exhibitions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.exh-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.exh-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.exh-card:hover img {
+    opacity: 0.85;
+}
+
+.exh-no-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #F5F4F0;
+}
+
+.exhibition-detail .exh-cover img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+}
+
+.exhibition-detail .exh-info {
+    padding: 48px 48px 0;
+}
+
+.exhibition-detail .exh-artists,
+.exhibition-detail .exh-artworks {
+    padding: 0 48px 80px;
+}
+
+@media (max-width: 768px) {
+    .exhibitions-section {
+        padding: 40px 24px;
+    }
+    .exhibition-detail .exh-info {
+        padding: 32px 24px 0;
+    }
+    .exhibition-detail .exh-artists,
+    .exhibition-detail .exh-artworks {
+        padding: 0 24px 60px;
+    }
+}
+
+/* ===== ГЛАВНАЯ ===== */
+.hero {
+    padding: 120px 48px 80px;
+    border-bottom: 0.5px solid #E0E0E0;
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #0D0D0D;
+    margin-bottom: 16px;
+}
+
+.hero-sub {
+    font-size: 16px;
+    color: #8C8C8C;
+    margin-bottom: 32px;
+    max-width: 480px;
+}
+
+.hero-link {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0D0D0D;
+    text-decoration: none;
+    border-bottom: 0.5px solid #0D0D0D;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.hero-link:hover {
+    color: #C8A97E;
+    border-color: #C8A97E;
+}
+
+.home-section {
+    padding: 64px 48px;
+    border-bottom: 0.5px solid #E0E0E0;
+}
+
+.see-all {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0D0D0D;
+    text-decoration: none;
+    border-bottom: 0.5px solid #0D0D0D;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.see-all:hover {
+    color: #C8A97E;
+    border-color: #C8A97E;
+}
+
+/* ===== О ГАЛЕРЕЕ ===== */
+.about-section {
+    padding: 80px 48px;
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 64px 24px 48px;
+    }
+    .hero-title {
+        font-size: 40px;
+    }
+    .home-section {
+        padding: 40px 24px;
+    }
+    .about-section {
+        padding: 48px 24px;
+    }
+}
+
+/* ===== МАГАЗИН ===== */
+.shop-section {
+    padding: 64px 48px;
+}
+
+.shop-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.filter-btn {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8C8C8C;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 0.5px solid #E0E0E0;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn--active {
+    color: #0D0D0D;
+    border-color: #0D0D0D;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+.shop-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.shop-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.shop-card:hover img {
+    opacity: 0.85;
+}
+
+.shop-no-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #F5F4F0;
+}
+
+.shop-no-image--large {
+    aspect-ratio: 3/4;
+}
+
+.shop-price {
+    font-size: 15px;
+    font-weight: 500;
+    color: #0D0D0D;
+    margin-top: 6px;
+}
+
+.empty-state {
+    font-size: 14px;
+    color: #8C8C8C;
+    padding: 40px 0;
+}
+
+@media (max-width: 768px) {
+    .shop-section {
+        padding: 40px 24px;
+    }
+    .shop-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 24px;
+    }
+}
+
+/* ===== INQUIRY ===== */
+.inquiry-section {
+    padding: 64px 48px;
+}
+
+.inquiry-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.inquiry-artwork img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.form {
+    margin-top: 32px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8C8C8C;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 0.5px solid #2A2A2A;
+    font-size: 15px;
+    color: #2A2A2A;
+    background: transparent;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-bottom-color: #C8A97E;
+}
+
+.form-textarea {
+    height: 100px;
+    resize: none;
+}
+
+.form-btn {
+    margin-top: 8px;
+    padding: 14px 32px;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+.form-btn:hover {
+    background: #C8A97E;
+}
+
+.inquiry-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 32px;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: background 0.2s;
+}
+
+.inquiry-btn:hover {
+    background: #C8A97E;
+}
+
+@media (max-width: 768px) {
+    .inquiry-section {
+        padding: 40px 24px;
+    }
+    .inquiry-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}

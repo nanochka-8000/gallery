@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}АК Галерея — Бишкек{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-text">
+        <h1 class="hero-title">АК Галерея</h1>
+        <p class="hero-sub">Современное искусство и традиционное кыргызское ремесло</p>
+        <a href="/artists/" class="hero-link">Художники →</a>
+    </div>
+</section>
+
+{% if current_exhibitions %}
+<section class="home-section">
+    <h2 class="page-title">Текущие выставки</h2>
+    <div class="exhibitions-grid">
+        {% for exh in current_exhibitions %}
+        <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
+            {% if exh.cover_image %}
+                <img src="{{ exh.cover_image.url }}" alt="{{ exh.title }}">
+            {% else %}
+                <div class="exh-no-image"></div>
+            {% endif %}
+            <div class="card-body">
+                <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                <h2 class="card-name">{{ exh.title }}</h2>
+                <p class="card-city">{{ exh.location }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <a href="/exhibitions/" class="see-all">Все выставки →</a>
+</section>
+{% endif %}
+
+{% if upcoming_exhibitions %}
+<section class="home-section">
+    <h2 class="page-title">Предстоящие</h2>
+    <div class="exhibitions-grid">
+        {% for exh in upcoming_exhibitions %}
+        <a href="/exhibitions/{{ exh.id }}/" class="exh-card">
+            {% if exh.cover_image %}
+                <img src="{{ exh.cover_image.url }}" alt="{{ exh.title }}">
+            {% else %}
+                <div class="exh-no-image"></div>
+            {% endif %}
+            <div class="card-body">
+                <span class="card-tag">{{ exh.start_date }} — {{ exh.end_date }}</span>
+                <h2 class="card-name">{{ exh.title }}</h2>
+                <p class="card-city">{{ exh.location }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="home-section">
+    <h2 class="page-title">Художники</h2>
+    <div class="artists-grid">
+        {% for artist in artists %}
+        <a href="/artists/{{ artist.id }}/" class="artist-card">
+            {% if artist.photo %}
+                <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+            {% endif %}
+            <div class="card-body">
+                <span class="card-tag">{{ artist.medium }}</span>
+                <h2 class="card-name">{{ artist.name }}</h2>
+                <p class="card-city">{{ artist.city }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <a href="/artists/" class="see-all">Все художники →</a>
+</section>
+
+{% endblock %}
