@@ -1,28 +1,21 @@
-# Виртуальное окружение
+
 venv/
 env/
 
-# База данных (она у каждого своя)
+
 db.sqlite3
 db.sqlite3-journal
 
-# Медиафайлы (загруженные фото)
 media/
 
-# Кэш Python
 __pycache__/
 *.pyc
 *.pyo
 
-# PyCharm
 .idea/
 
-# Системные
 .DS_Store
 Thumbs.db
 
-# Секретные ключи
 .env
 *.log
-
-# Миграции (опционально - можно оставить)

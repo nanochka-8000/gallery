@@ -180,11 +180,21 @@ body {
 }
 
 /* GRIDS */
+.artists-section {
+    padding: 0 48px 80px;
+}
+
 .artists-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 40px;
 }
+
+.artists-grid {
+    padding: 0;
+    margin: 0;
+}
+
 .artist-card { text-decoration: none; color: inherit; display: block; }
 .artist-card img {
     width: 100%;
@@ -438,6 +448,7 @@ body {
     .home-section { padding: 40px 24px; }
     .artist-hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
     .artwork-detail { padding: 40px 24px; }
+    .artists-section {padding: 0 24px 60px; }
     .artwork-hero { grid-template-columns: 1fr; gap: 32px; }
     .about-section { grid-template-columns: 1fr; }
     .about-text { padding: 48px 24px; }
