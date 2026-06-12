@@ -5,52 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}АК Галерея — TUMAR ART GROUP{% endblock %}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
-    <nav class="navbar">
+<nav class="navbar navbar-expand-lg border-bottom">
+    <div class="container-fluid px-4">
         <a href="/" class="nav-logo">АК</a>
-        <div class="nav-links">
-            <a href="/artists/"   class="nav-link {% if '/artists/'    in request.path %}nav-link--active{% endif %}">Художники</a>
-            <a href="/exhibitions/" class="nav-link {% if '/exhibitions/' in request.path %}nav-link--active{% endif %}">Выставки</a>
-            <a href="/shop/"      class="nav-link {% if '/shop/'       in request.path %}nav-link--active{% endif %}">Магазин</a>
-            <a href="/about/"     class="nav-link {% if '/about/'      in request.path %}nav-link--active{% endif %}">О галерее</a>
-        </div>
-        <button class="nav-menu-btn" onclick="this.closest('nav').classList.toggle('nav--open')">
-            <span></span><span></span>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
         </button>
-    </nav>
-
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-col">
-                <span class="footer-logo">АК</span>
-                <p class="footer-sub">TUMAR ART GROUP</p>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <div class="navbar-nav ms-auto gap-4">
+                <a href="/artists/" class="nav-link-item">Художники</a>
+                <a href="/exhibitions/" class="nav-link-item">Выставки</a>
+                <a href="/shop/" class="nav-link-item">Магазин</a>
+                <a href="/about/" class="nav-link-item">О галерее</a>
             </div>
-            <div class="footer-col">
+        </div>
+    </div>
+</nav>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="footer mt-5 border-top py-4">
+    <div class="container-fluid px-4">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <span class="footer-logo">АК</span>
+                <p class="footer-sub mt-1">TUMAR ART GROUP</p>
+            </div>
+            <div class="col-md-4 mb-3 d-flex flex-column gap-2">
                 <a href="/artists/" class="footer-link">Художники</a>
                 <a href="/exhibitions/" class="footer-link">Выставки</a>
                 <a href="/shop/" class="footer-link">Магазин</a>
                 <a href="/about/" class="footer-link">О галерее</a>
             </div>
-            <div class="footer-col">
+            <div class="col-md-4 mb-3 d-flex flex-column gap-2">
                 <p class="footer-text">Бишкек, Кыргызстан</p>
                 <a href="mailto:info@akgallery.kg" class="footer-link">info@akgallery.kg</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 АК Галерея — TUMAR ART GROUP</p>
+        <div class="border-top pt-3 mt-2">
+            <p class="footer-text">© 2025 АК Галерея — TUMAR ART GROUP</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
