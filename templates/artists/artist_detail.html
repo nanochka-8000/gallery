@@ -20,8 +20,13 @@
     {% if artist.quote %}
       <p class="artist-card-quote">«{{ artist.quote }}»</p>
     {% endif %}
-    <div class="artist-card-footer">
-      <img src="{% static 'images/ak_logo.jpeg' %}" alt="АК" class="artist-card-logo-img">
+    <div class="artist-card-footer-row">
+    <img src="{% static 'images/ak_logo.jpeg' %}" alt="АК" class="artist-card-logo-img">
+    {% if artist.qr_code %}
+        <img src="{{ artist.qr_code.url }}" alt="QR" class="artist-card-qr">
+    {% else %}
+        <div class="artist-card-qr-placeholder"></div>
+    {% endif %}
     </div>
   </div>
 

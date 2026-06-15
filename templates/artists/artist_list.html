@@ -1,31 +1,47 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Художники — АК Галерея{% endblock %}
-
 {% block content %}
 <div class="page-header">
-    <span class="page-tag">TUMAR ART GROUP</span>
-    <h1 class="page-title">Художники</h1>
+  <span class="page-tag">TUMAR ART GROUP</span>
+  <h1 class="page-title">Художники</h1>
 </div>
 <section class="artists-section">
-    <div class="artists-grid">
-        {% for artist in artists %}
-        <a href="/artists/{{ artist.id }}/" class="artist-card">
-            {% if artist.photo %}
-                <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
-            {% else %}
-                <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>
-            {% endif %}
-            <div class="card-body">
-                <span class="card-tag">{{ artist.medium }}</span>
-                <h2 class="card-name">{{ artist.name }}</h2>
-                <p class="card-city">{{ artist.city }}</p>
-            </div>
-        </a>
-        {% empty %}
-        <p class="empty-state">Художники появятся здесь после добавления через админ-панель.</p>
-        {% endfor %}
-    </div>
+  <div class="artists-grid">
+    {% for artist in artists %}
+    <a href="/artists/{{ artist.id }}/" class="artist-card">
+      {% if artist.photo %}
+        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+      {% else %}
+        <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>
+      {% endif %}
+      <div class="card-body">
+        <span class="card-tag">{{ artist.medium }}</span>
+        <h2 class="card-name">{{ artist.name }}</h2>
+        <p class="card-city">{{ artist.city }}</p>
+      </div>
+    </a>
+    {% endfor %}
+
+    {% for workshop in workshops %}
+    <a href="/artists/workshop/{{ workshop.id }}/" class="artist-card workshop-card">
+      {% if workshop.photo %}
+        <img src="{{ workshop.photo.url }}" alt="{{ workshop.name }}">
+      {% else %}
+        <div class="workshop-card-placeholder">
+          <span>{{ workshop.name }}</span>
+        </div>
+      {% endif %}
+      <div class="card-body">
+        <h2 class="card-name">{{ workshop.name }} {{ workshop.subtitle }}</h2>
+        <p class="card-city">{{ workshop.city }}</p>
+      </div>
+    </a>
+    {% endfor %}
+
+    {% if not artists and not workshops %}
+      <p class="empty-state">Художники появятся здесь после добавления через админ-панель.</p>
+    {% endif %}
+  </div>
 </section>
 {% endblock %}
