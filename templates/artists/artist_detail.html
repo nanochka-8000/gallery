@@ -1,51 +1,62 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}{{ artist.name }} — АК Галерея{% endblock %}
-
 {% block content %}
+
 <div class="artist-hero">
-    <div>
-        {% if artist.photo %}
-            <img src="{{ artist.photo.url }}" alt="{{ artist.name }}" class="artist-photo">
-        {% else %}
-            <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>
-        {% endif %}
+
+  <!-- ЛЕВАЯ КАРТОЧКА (чёрная) -->
+  <div class="artist-card-black">
+    <div class="artist-card-photo">
+      {% if artist.photo %}
+        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+      {% endif %}
     </div>
-    <div class="artist-info">
-        <span class="page-tag">Художник</span>
-        <h1 class="artist-name">{{ artist.name }}</h1>
-        <p class="artist-city">{{ artist.city }}{% if artist.medium %} · {{ artist.medium }}{% endif %}</p>
-        {% if artist.bio %}
-            <p class="artist-bio">{{ artist.bio }}</p>
-        {% endif %}
-        <div style="margin-top:40px;">
-            <a href="mailto:info@akgallery.kg?subject=Запрос про художника {{ artist.name }}" class="btn-outline">Связаться с галереей</a>
-        </div>
+    <h1 class="artist-card-name">
+    {% for word in artist.name.split %}
+        <span style="display:block;">{{ word }}</span>
+    {% endfor %}
+</h1>
+    {% if artist.quote %}
+      <p class="artist-card-quote">«{{ artist.quote }}»</p>
+    {% endif %}
+    <div class="artist-card-footer">
+      <img src="{% static 'images/ak_logo.jpeg' %}" alt="АК" class="artist-card-logo-img">
     </div>
+  </div>
+
+  <!-- ПРАВАЯ ЧАСТЬ (bio) -->
+  <div class="artist-info">
+    <h2 class="artist-about-title">About.</h2>
+    {% if artist.bio %}
+      <div class="artist-bio">{{ artist.bio|linebreaks }}</div>
+    {% endif %}
+  </div>
+
 </div>
 
 {% if artworks %}
 <div class="artworks-section">
-    <h2 class="section-title">Работы</h2>
-    <div class="artworks-grid">
-        {% for artwork in artworks %}
-        <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
-            {% if artwork.image %}
-                <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
-            {% else %}
-                <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
-            {% endif %}
-            <div class="card-body">
-                <h3 class="artwork-title">{{ artwork.title }}</h3>
-                <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
-                {% if artwork.price %}
-                    <p class="artwork-meta" style="margin-top:4px;color:var(--black);">{{ artwork.price }}</p>
-                {% endif %}
-            </div>
-        </a>
-        {% endfor %}
-    </div>
+  <h2 class="section-title">Работы</h2>
+  <div class="artworks-grid">
+    {% for artwork in artworks %}
+    <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
+      {% if artwork.image %}
+        <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+      {% else %}
+        <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
+      {% endif %}
+      <div class="card-body">
+        <h3 class="artwork-title">{{ artwork.title }}</h3>
+        <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
+        {% if artwork.price %}
+          <p class="artwork-meta" style="margin-top:4px;color:var(--black);">{{ artwork.price }}</p>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
 </div>
 {% endif %}
+
 {% endblock %}

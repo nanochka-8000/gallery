@@ -4,6 +4,7 @@ from django.db import models
 class Artist(models.Model):
     name = models.CharField(max_length=200)  # имя художника
     bio = models.TextField(blank=True)  # биография
+    quote = models.CharField(max_length=300, blank=True)  # цитата художника
     photo = models.ImageField(upload_to='artists/')  # фото художника
     city = models.CharField(max_length=100, blank=True)  # город
     medium = models.CharField(max_length=200, blank=True)  # техника (живопись, войлок...)
