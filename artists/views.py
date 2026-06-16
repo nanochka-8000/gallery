@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Artist, Artwork, Workshop
 
 def artist_list(request):
-    artists = Artist.objects.all()
+    artists = Artist.objects.all().order_by('order')
     workshops = Workshop.objects.all()
     return render(request, 'artists/artist_list.html', {'artists': artists, 'workshops': workshops})
 

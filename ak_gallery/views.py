@@ -5,7 +5,8 @@ from exhibitions.models import Exhibition
 def home(request):
     current_exhibitions = Exhibition.objects.filter(status='current')
     upcoming_exhibitions = Exhibition.objects.filter(status='upcoming')
-    artists = Artist.objects.all()[:6]
+    artists = Artist.objects.all().order_by('order')[:6]
+
     return render(request, 'home.html', {
         'current_exhibitions': current_exhibitions,
         'upcoming_exhibitions': upcoming_exhibitions,

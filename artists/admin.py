@@ -3,8 +3,9 @@ from .models import Artist, Artwork, Workshop, WorkshopMember
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
-    list_display = ['name', 'city', 'medium']
+    list_display = ['name', 'city', 'medium', 'order']
     search_fields = ['name', 'city']
+    list_editable = ['order']
 
 @admin.register(Artwork)
 class ArtworkAdmin(admin.ModelAdmin):

@@ -3,6 +3,7 @@ from django.db import models
 
 class Artist(models.Model):
     name = models.CharField(max_length=200)  # имя художника
+    order = models.IntegerField(default=0)
     bio = models.TextField(blank=True)  # биография
     quote = models.CharField(max_length=300, blank=True)  # цитата художника
     photo = models.ImageField(upload_to='artists/')  # фото художника
@@ -19,6 +20,7 @@ class Artwork(models.Model):
     title = models.CharField(max_length=200)  # название работы
     year = models.IntegerField(blank=True, null=True)  # год
     medium = models.CharField(max_length=200, blank=True)  # материал
+    weight = models.CharField(max_length=100, blank=True)  # вес работы
     dimensions = models.CharField(max_length=100, blank=True)  # размер
     description = models.TextField(blank=True)  # описание
     image = models.ImageField(upload_to='artworks/')  # фото работы
@@ -34,7 +36,7 @@ class Workshop(models.Model):
     photo = models.ImageField(upload_to='workshops/', blank=True)  # фото мастерской
     city = models.CharField(max_length=100, blank=True)
     qr_code = models.ImageField(upload_to='qr_codes/', blank=True)  # QR код
-    
+
     def __str__(self):
         return self.name
 

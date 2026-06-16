@@ -19,7 +19,9 @@
             <p class="artist-city">{{ exhibition.location }}</p>
         {% endif %}
         {% if exhibition.description %}
-            <p class="artist-bio" style="margin-top:24px;">{{ exhibition.description }}</p>
+            <div class="artist-bio" style="margin-top:24px;">
+                {{ exhibition.description|linebreaks }}
+            </div>
         {% endif %}
     </div>
 
