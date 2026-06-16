@@ -7,11 +7,24 @@
 <section class="artwork-detail">
     <div class="artwork-hero">
         <div class="artwork-image-wrap">
-            {% if artwork.image %}
-                <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}" class="artwork-image">
-            {% else %}
-                <div style="width:100%;aspect-ratio:1/1;background:var(--grey-3);"></div>
-            {% endif %}
+            <div class="artwork-slider">
+                {% if artwork.image %}
+                <div class="slide active">
+                    <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}" class="artwork-image">
+                </div>
+                {% endif %}
+                {% for img in artwork.images.all %}
+                <div class="slide">
+                    <img src="{{ img.image.url }}" alt="{{ artwork.title }}" class="artwork-image">
+                </div>
+                {% endfor %}
+                <button class="slide-btn slide-prev">&#8592;</button>
+                <button class="slide-btn slide-next">&#8594;</button>
+                <div class="slide-dots">
+                    {% if artwork.image %}<span class="dot active"></span>{% endif %}
+                    {% for img in artwork.images.all %}<span class="dot"></span>{% endfor %}
+                </div>
+            </div>
         </div>
 
         <div class="artwork-info">
@@ -32,7 +45,7 @@
             </div>
 
             {% if artwork.description %}
-                <p class="artwork-description">{{ artwork.description }}</p>
+                <div class="artwork-description">{{ artwork.description|linebreaks }}</div>
             {% endif %}
 
             <div class="qr-info">

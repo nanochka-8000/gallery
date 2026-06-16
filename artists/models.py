@@ -49,3 +49,14 @@ class WorkshopMember(models.Model):
     
     def __str__(self):
         return f"{self.name} — {self.workshop.name}"
+    
+class ArtworkImage(models.Model):
+    artwork = models.ForeignKey(Artwork, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='artworks/gallery/')
+    order = models.IntegerField(default=0)  # порядок фото
+    
+    class Meta:
+        ordering = ['order']
+    
+    def __str__(self):
+        return f"Фото {self.order} — {self.artwork.title}"
