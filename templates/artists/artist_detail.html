@@ -1,96 +1,123 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}{{ artist.name }} — АК Галерея{% endblock %}
+
 {% block content %}
 
-<div class="artist-page">
-
-  <!-- КАРТОЧКА АВТОРА -->
-  <div class="artist-card-black">
-    <div class="artist-card-photo">
-      {% if artist.photo %}
-        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
-      {% endif %}
-    </div>
-    <h1 class="artist-card-name">
-      {% for word in artist.name.split %}
-        <span style="display:block;">{{ word }}</span>
-      {% endfor %}
-    </h1>
-    {% if artist.quote %}
-      <p class="artist-card-quote">«{{ artist.quote }}»</p>
+<section class="artist-hero-fullscreen">
+    {% if artist.photo %}
+        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}" class="artist-hero-image">
+    {% else %}
+        <div class="artist-hero-placeholder"></div>
     {% endif %}
-    <div class="artist-card-footer-row">
-      <img src="{% static 'images/ak_logo.jpeg' %}" alt="АК" class="artist-card-logo-img">
-      {% if artist.qr_code %}
-        <img src="{{ artist.qr_code.url }}" alt="QR" class="artist-card-qr">
-      {% else %}
-        <div class="artist-card-qr-placeholder"></div>
-      {% endif %}
+    <div class="artist-hero-overlay">
+        <span class="hero-tag">TUMAR ART GROUP</span>
+        <h1 class="artist-hero-name">{{ artist.name }}</h1>
+{#        {% if artist.medium %}#}
+{#            <p class="artist-hero-medium">{{ artist.medium }}</p>#}
+{#        {% endif %}#}
     </div>
-  </div>
+</section>
 
-  <!-- АККОРДЕОН -->
-  <div class="artist-accordion">
-
-    <!-- ABOUT -->
-    <div class="accordion-item">
-      <div class="accordion-header" data-target="acc-bio">
-        <span>About</span>
-        <span class="accordion-arrow">↓</span>
-      </div>
-      <div class="accordion-body" id="acc-bio">
-        {% if artist.bio %}
-          <div class="artist-bio">{{ artist.bio|linebreaks }}</div>
-        {% endif %}
-      </div>
+<section class="artist-tabs-section">
+    <div class="artist-tabs">
+        <button class="artist-tab artist-tab--active" onclick="switchTab('artworks', this)">Работы</button>
+        <button class="artist-tab" onclick="switchTab('documents', this)">Биография</button>
     </div>
 
-    <!-- РАБОТЫ -->
-    <div class="accordion-item">
-      <div class="accordion-header" data-target="acc-works">
-        <span>Работы</span>
-        <span class="accordion-arrow">↓</span>
-      </div>
-      <div class="accordion-body" id="acc-works">
+    <div id="artworks-panel" class="artist-panel artist-panel--active">
         {% if artworks %}
-          <div class="artworks-grid">
-            {% for artwork in artworks %}
-            <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
-              {% if artwork.image %}
-                <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
-              {% else %}
-                <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
-              {% endif %}
-              <div class="card-body">
-                <h3 class="artwork-title">{{ artwork.title }}</h3>
-                <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
-                {% if artwork.price %}
-                  <p class="artwork-meta" style="margin-top:4px;color:var(--black);">{{ artwork.price }}</p>
-                {% endif %}
-              </div>
-            </a>
-            {% endfor %}
-          </div>
+            <div class="artworks-grid">
+                {% for artwork in artworks %}
+                <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
+                    {% if artwork.image %}
+                        <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+                    {% else %}
+                        <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h3 class="artwork-title">{{ artwork.title }}</h3>
+                        <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
+                        {% if artwork.price %}
+                            <p class="artwork-meta artwork-price-small">{{ artwork.price }}</p>
+                        {% endif %}
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
         {% else %}
-          <p class="empty-state">Работы появятся здесь после добавления.</p>
+            <p class="empty-state">Работы этого художника скоро появятся.</p>
         {% endif %}
-      </div>
     </div>
 
-  </div>
+    <div id="documents-panel" class="artist-panel">
+        <div class="artist-bio-block">
+            <span class="card-tag">{{ artist.city }}</span>
+            <h2 class="artist-bio-heading">О художнике</h2>
+            {% if artist.bio %}
+                <div class="artist-bio">{{ artist.bio|linebreaks }}</div>
+            {% else %}
+                <p class="empty-state">Биография скоро появится.</p>
+            {% endif %}
+
+            <div class="artist-contact-block">
+                <button class="btn-outline" onclick="openContactModal()">
+                    Связаться с галереей
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="contact-modal" class="contact-modal">
+    <div class="contact-modal-overlay" onclick="closeContactModal()"></div>
+    <div class="contact-modal-content">
+        <button class="contact-modal-close" onclick="closeContactModal()">×</button>
+        <span class="card-tag">Контакты галереи</span>
+        <h2 class="artist-bio-heading">Свяжитесь с нами</h2>
+        <p class="artist-bio">Выберите удобный способ связи — мы ответим в течение 24 часов.</p>
+
+        <div class="contact-methods">
+            <a href="mailto:info@akgallery.kg?subject=Запрос про художника {{ artist.name }}" class="contact-method">
+                <span class="contact-method-label">Email</span>
+                <span class="contact-method-value">info@akgallery.kg</span>
+            </a>
+
+            <a href="https://wa.me/996555000000" target="_blank" class="contact-method">
+                <span class="contact-method-label">WhatsApp</span>
+                <span class="contact-method-value">+996 555 000 000</span>
+            </a>
+
+            <a href="tel:+996555000000" class="contact-method">
+                <span class="contact-method-label">Телефон</span>
+                <span class="contact-method-value">+996 555 000 000</span>
+            </a>
+
+            <a href="https://www.instagram.com/" target="_blank" class="contact-method">
+                <span class="contact-method-label">Instagram</span>
+                <span class="contact-method-value">@akgallery</span>
+            </a>
+        </div>
+    </div>
 </div>
 
 <script>
-document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-        const body = document.getElementById(header.dataset.target);
-        const arrow = header.querySelector('.accordion-arrow');
-        const isOpen = body.classList.contains('open');
-        body.classList.toggle('open', !isOpen);
-        arrow.textContent = isOpen ? '↓' : '↑';
-    });
-});
+function switchTab(tabName, btn) {
+    document.querySelectorAll('.artist-tab').forEach(b => b.classList.remove('artist-tab--active'));
+    document.querySelectorAll('.artist-panel').forEach(panel => panel.classList.remove('artist-panel--active'));
+
+    btn.classList.add('artist-tab--active');
+    document.getElementById(tabName + '-panel').classList.add('artist-panel--active');
+}
+
+function openContactModal() {
+    document.getElementById('contact-modal').classList.add('contact-modal--open');
+}
+
+function closeContactModal() {
+    document.getElementById('contact-modal').classList.remove('contact-modal--open');
+}
 </script>
 
 {% endblock %}
