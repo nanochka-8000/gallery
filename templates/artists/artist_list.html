@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Художники — АК Галерея{% endblock %}
+{% block title %}Мастера — АК Галерея{% endblock %}
 {% block content %}
 <div class="page-header">
   <span class="page-tag">TUMAR ART GROUP</span>
-  <h1 class="page-title">Художники</h1>
+  <h1 class="page-title">Мастера</h1>
 </div>
 <section class="artists-section">
   <div class="artists-grid">
@@ -40,7 +40,7 @@
     {% endfor %}
 
     {% if not artists and not workshops %}
-      <p class="empty-state">Художники появятся здесь после добавления через админ-панель.</p>
+      <p class="empty-state">Мастера появятся здесь после добавления через админ-панель.</p>
     {% endif %}
   </div>
 </section>

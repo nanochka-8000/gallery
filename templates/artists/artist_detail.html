@@ -47,14 +47,14 @@
                 {% endfor %}
             </div>
         {% else %}
-            <p class="empty-state">Работы этого художника скоро появятся.</p>
+            <p class="empty-state">Работы этого мастера скоро появятся.</p>
         {% endif %}
     </div>
 
     <div id="documents-panel" class="artist-panel">
         <div class="artist-bio-block">
             <span class="card-tag">{{ artist.city }}</span>
-            <h2 class="artist-bio-heading">О художнике</h2>
+            <h2 class="artist-bio-heading">О мастере</h2>
             {% if artist.bio %}
                 <div class="artist-bio">{{ artist.bio|linebreaks }}</div>
             {% else %}
