@@ -1,47 +1,162 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{#{% block title %}Мастера — АК Галерея{% endblock %}#}
+{#{% block content %}#}
+{#<div class="page-header">#}
+{#  <span class="page-tag">TUMAR ART GROUP</span>#}
+{#  <h1 class="page-title">Мастера</h1>#}
+{#</div>#}
+{#<section class="artists-section">#}
+{#  <div class="artists-grid">#}
+{#    {% for artist in artists %} #}
+{#    <a href="/artists/{{ artist.id }}/" class="artist-card">#}
+{#      {% if artist.photo %}#}
+{#        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">#}
+{#      {% else %}#}
+{#        <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>#}
+{#      {% endif %}#}
+{#      <div class="card-body">#}
+{#        <span class="card-tag">{{ artist.medium }}</span>#}
+{#        <h2 class="card-name">{{ artist.name }}</h2>#}
+{#        <p class="card-city">{{ artist.city }}</p>#}
+{#      </div>#}
+{#    </a>#}
+{#    {% endfor %}#}
+{##}
+{#    {% for workshop in workshops %}#}
+{#    <a href="/artists/workshop/{{ workshop.id }}/" class="artist-card workshop-card">#}
+{#      {% if workshop.photo %}#}
+{#        <img src="{{ workshop.photo.url }}" alt="{{ workshop.name }}">#}
+{#      {% else %}#}
+{#        <div class="workshop-card-placeholder">#}
+{#          <span>{{ workshop.name }}</span>#}
+{#        </div>#}
+{#      {% endif %}#}
+{#      <div class="card-body">#}
+{#        <h2 class="card-name">{{ workshop.name }} {{ workshop.subtitle }}</h2>#}
+{#        <p class="card-city">{{ workshop.city }}</p>#}
+{#      </div>#}
+{#    </a>#}
+{#    {% endfor %}#}
+{##}
+{#    {% if not artists and not workshops %}#}
+{#      <p class="empty-state">Мастера появятся здесь после добавления через админ-панель.</p>#}
+{#    {% endif %}#}
+{#  </div>#}
+{#</section>#}
+{#{% endblock %}#}
+
+
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}Мастера — АК Галерея{% endblock %}
+
 {% block content %}
 <div class="page-header">
-  <span class="page-tag">TUMAR ART GROUP</span>
-  <h1 class="page-title">Мастера</h1>
+{#    <span class="page-tag">TUMAR ART GROUP</span>#}
+    <h1 class="page-title">Мастера</h1>
 </div>
+
 <section class="artists-section">
-  <div class="artists-grid">
-    {% for artist in artists %}
-    <a href="/artists/{{ artist.id }}/" class="artist-card">
-      {% if artist.photo %}
-        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
-      {% else %}
-        <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>
-      {% endif %}
-      <div class="card-body">
-        <span class="card-tag">{{ artist.medium }}</span>
-        <h2 class="card-name">{{ artist.name }}</h2>
-        <p class="card-city">{{ artist.city }}</p>
-      </div>
-    </a>
-    {% endfor %}
 
-    {% for workshop in workshops %}
-    <a href="/artists/workshop/{{ workshop.id }}/" class="artist-card workshop-card">
-      {% if workshop.photo %}
-        <img src="{{ workshop.photo.url }}" alt="{{ workshop.name }}">
-      {% else %}
-        <div class="workshop-card-placeholder">
-          <span>{{ workshop.name }}</span>
-        </div>
-      {% endif %}
-      <div class="card-body">
-        <h2 class="card-name">{{ workshop.name }} {{ workshop.subtitle }}</h2>
-        <p class="card-city">{{ workshop.city }}</p>
-      </div>
-    </a>
-    {% endfor %}
+    <div class="view-switcher">
+        <button class="view-btn view-btn--active" onclick="switchView('grid', this)">Сетка</button>
+        <button class="view-btn" onclick="switchView('list', this)">Список</button>
+    </div>
 
-    {% if not artists and not workshops %}
-      <p class="empty-state">Мастера появятся здесь после добавления через админ-панель.</p>
-    {% endif %}
-  </div>
+    <div id="grid-view" class="artists-grid view-active">
+        {% for artist in artists %}
+        <a href="/artists/{{ artist.id }}/" class="artist-card">
+            {% if artist.photo %}
+                <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+            {% else %}
+                <div class="artist-placeholder" style="aspect-ratio:3/4;background:var(--grey-3);"></div>
+            {% endif %}
+            <div class="card-body">
+                <span class="card-tag">{{ artist.medium }}</span>
+                <h2 class="card-name">{{ artist.name }}</h2>
+                <p class="card-city">{{ artist.city }}</p>
+            </div>
+        </a>
+        {% endfor %}
+
+        {% for workshop in workshops %}
+        <a href="/artists/workshop/{{ workshop.id }}/" class="artist-card workshop-card">
+            {% if workshop.photo %}
+                <img src="{{ workshop.photo.url }}" alt="{{ workshop.name }}">
+            {% else %}
+                <div class="workshop-card-placeholder">
+                    <span>{{ workshop.name }}</span>
+                </div>
+            {% endif %}
+            <div class="card-body">
+                <h2 class="card-name">{{ workshop.name }} {{ workshop.subtitle }}</h2>
+                <p class="card-city">{{ workshop.city }}</p>
+            </div>
+        </a>
+        {% endfor %}
+
+        {% if not artists and not workshops %}
+        <p class="empty-state">Мастера появятся здесь после добавления через админ-панель.</p>
+        {% endif %}
+    </div>
+
+    <div id="list-view" class="artists-list">
+        {% for artist in artists %}
+        <a href="/artists/{{ artist.id }}/" class="artist-list-item">
+            <div class="artist-list-photo">
+                {% if artist.photo %}
+                    <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+                {% else %}
+                    <div class="artist-placeholder" style="width:100%;height:100%;background:var(--grey-3);"></div>
+                {% endif %}
+            </div>
+            <div class="artist-list-info">
+                <h2 class="artist-list-name">{{ artist.name }}</h2>
+                {% if artist.city %}
+                    <p class="artist-list-meta">{{ artist.city }}</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+
+        {% for workshop in workshops %}
+        <a href="/artists/workshop/{{ workshop.id }}/" class="artist-list-item">
+            <div class="artist-list-photo">
+                {% if workshop.photo %}
+                    <img src="{{ workshop.photo.url }}" alt="{{ workshop.name }}">
+                {% else %}
+                    <div class="workshop-card-placeholder" style="width:100%;height:100%;padding:10px;"></div>
+                {% endif %}
+            </div>
+            <div class="artist-list-info">
+                <h2 class="artist-list-name">{{ workshop.name }} {{ workshop.subtitle }}</h2>
+                {% if workshop.city %}
+                    <p class="artist-list-meta">{{ workshop.city }}</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
 </section>
+
+<script>
+function switchView(viewName, btn) {
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('view-btn--active'));
+    btn.classList.add('view-btn--active');
+
+    const grid = document.getElementById('grid-view');
+    const list = document.getElementById('list-view');
+
+    if (viewName === 'grid') {
+        grid.classList.add('view-active');
+        if (list) list.classList.remove('view-active');
+    } else {
+        grid.classList.remove('view-active');
+        if (list) list.classList.add('view-active');
+    }
+}
+</script>
 {% endblock %}
