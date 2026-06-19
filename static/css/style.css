@@ -738,7 +738,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     opacity: 0.85;
 }
 
@@ -999,6 +1000,8 @@ body {
 }
 
 
+
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -1008,6 +1011,10 @@ body {
     .page-header { padding: 40px 24px 24px; }
     .home-section { padding: 40px 24px; }
     .artist-hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
+    .artist-hero-image {
+        object-fit: cover;
+        object-position: center 20%;
+    }
     .artwork-detail { padding: 40px 24px; }
     .artists-section {padding: 0 24px 60px; }
     .artwork-hero { grid-template-columns: 1fr; gap: 32px; }
