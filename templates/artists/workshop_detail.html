@@ -1,47 +1,140 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}{{ workshop.name }} — АК Галерея{% endblock %}
+
 {% block content %}
 
-<!-- ВЕРХНИЙ ЧЁРНЫЙ БЛОК -->
-<div class="workshop-hero">
-  <div class="workshop-hero-photo">
+<section class="artist-hero-fullscreen">
     {% if workshop.photo %}
-      <img src="{{ workshop.photo.url }}" alt="{{ workshop.name }}">
+        <img src="{{ workshop.photo.url }}" alt="{{ workshop.name }}" class="artist-hero-image">
     {% else %}
-      <div class="workshop-hero-empty"></div>
+        <div class="artist-hero-placeholder"></div>
     {% endif %}
-  </div>
-  <div class="workshop-hero-bottom">
-    <h1 class="workshop-name">{{ workshop.name }}<br>{{ workshop.subtitle }}</h1>
-    <div class="workshop-footer-row">
-      <img src="{% static 'images/ak_logo.jpeg' %}" alt="АК" class="workshop-logo">
-      {% if workshop.qr_code %}
-        <img src="{{ workshop.qr_code.url }}" alt="QR" class="workshop-qr">
-      {% else %}
-        <div class="workshop-qr-placeholder"></div>
-      {% endif %}
+    <div class="artist-hero-overlay">
+        <span class="hero-tag">TUMAR ART GROUP</span>
+        <h1 class="artist-hero-name">{{ workshop.name }}</h1>
+        {% if workshop.subtitle %}
+            <p class="artist-hero-medium">{{ workshop.subtitle }}</p>
+        {% endif %}
     </div>
-  </div>
+</section>
+
+<section class="artist-tabs-section">
+    <div class="artist-tabs">
+        <button class="artist-tab artist-tab--active" onclick="switchTab('artworks', this)">Работы</button>
+        <button class="artist-tab" onclick="switchTab('about', this)">О мастерской</button>
+        <button class="artist-tab" onclick="switchTab('members', this)">Участники</button>
+    </div>
+
+    <div id="artworks-panel" class="artist-panel artist-panel--active">
+        {% if artworks %}
+            <div class="artworks-grid">
+                {% for artwork in artworks %}
+                <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
+                    {% if artwork.image %}
+                        <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+                    {% else %}
+                        <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h3 class="artwork-title">{{ artwork.title }}</h3>
+                        <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
+                        {% if artwork.price %}
+                            <p class="artwork-meta artwork-price-small">{{ artwork.price }}</p>
+                        {% endif %}
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty-state">Работы этой мастерской скоро появятся.</p>
+        {% endif %}
+    </div>
+
+    <div id="about-panel" class="artist-panel">
+        <div class="artist-bio-block">
+            <span class="card-tag">TUMAR ART GROUP</span>
+            <h2 class="artist-bio-heading">О мастерской</h2>
+            {% if workshop.bio %}
+                <div class="artist-bio">{{ workshop.bio|linebreaks }}</div>
+            {% else %}
+                <p class="empty-state">Информация скоро появится.</p>
+            {% endif %}
+
+            <div class="artist-contact-block">
+                <button class="btn-outline" onclick="openContactModal()">
+                    Связаться с галереей
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="members-panel" class="artist-panel">
+        {% if members %}
+            {% for member in members %}
+            <div class="workshop-member">
+                <h3 class="workshop-member-name">{{ member.name }}</h3>
+                {% if member.quote %}
+                    <p class="workshop-member-quote">«{{ member.quote }}»</p>
+                {% endif %}
+                <div class="workshop-member-bio">{{ member.bio|linebreaks }}</div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty-state">Информация об участниках скоро появится.</p>
+        {% endif %}
+    </div>
+</section>
+
+<div id="contact-modal" class="contact-modal">
+    <div class="contact-modal-overlay" onclick="closeContactModal()"></div>
+    <div class="contact-modal-content">
+        <button class="contact-modal-close" onclick="closeContactModal()">×</button>
+        <span class="card-tag">Контакты галереи</span>
+        <h2 class="artist-bio-heading">Свяжитесь с нами</h2>
+        <p class="artist-bio">Выберите удобный способ связи — мы ответим в течение 24 часов.</p>
+
+        <div class="contact-methods">
+            <a href="mailto:info@akgallery.kg?subject=Запрос про мастерскую {{ workshop.name }}" class="contact-method">
+                <span class="contact-method-label">Email</span>
+                <span class="contact-method-value">info@akgallery.kg</span>
+            </a>
+
+            <a href="https://wa.me/996555000000" target="_blank" class="contact-method">
+                <span class="contact-method-label">WhatsApp</span>
+                <span class="contact-method-value">+996 555 000 000</span>
+            </a>
+
+            <a href="tel:+996555000000" class="contact-method">
+                <span class="contact-method-label">Телефон</span>
+                <span class="contact-method-value">+996 555 000 000</span>
+            </a>
+
+            <a href="https://www.instagram.com/" target="_blank" class="contact-method">
+                <span class="contact-method-label">Instagram</span>
+                <span class="contact-method-value">@akgallery</span>
+            </a>
+        </div>
+    </div>
 </div>
 
-<!-- ТЕКСТ ПРО МАСТЕРСКУЮ -->
-<div class="workshop-content">
-  <h2 class="artist-about-title">About.</h2>
-  {% if workshop.bio %}
-    <div class="workshop-bio">{{ workshop.bio|linebreaks }}</div>
-  {% endif %}
+<script>
+function switchTab(tabName, btn) {
+    document.querySelectorAll('.artist-tab').forEach(b => b.classList.remove('artist-tab--active'));
+    document.querySelectorAll('.artist-panel').forEach(panel => panel.classList.remove('artist-panel--active'));
 
-  <!-- ЧЛЕНЫ СЕМЬИ -->
-  {% for member in members %}
-  <div class="workshop-member">
-    <h3 class="workshop-member-name">{{ member.name }}</h3>
-    {% if member.quote %}
-      <p class="workshop-member-quote">«{{ member.quote }}»</p>
-    {% endif %}
-    <div class="workshop-member-bio">{{ member.bio|linebreaks }}</div>
-  </div>
-  {% endfor %}
-</div>
+    btn.classList.add('artist-tab--active');
+    document.getElementById(tabName + '-panel').classList.add('artist-panel--active');
+}
+
+function openContactModal() {
+    document.getElementById('contact-modal').classList.add('contact-modal--open');
+}
+
+function closeContactModal() {
+    document.getElementById('contact-modal').classList.remove('contact-modal--open');
+}
+</script>
 
 {% endblock %}
