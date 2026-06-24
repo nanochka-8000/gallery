@@ -55,6 +55,11 @@
         <div class="artist-bio-block">
             <span class="card-tag">{{ artist.city }}</span>
             <h2 class="artist-bio-heading">О мастере</h2>
+
+            {% if artist.quote %}
+                <p class="workshop-member-quote">«{{ artist.quote }}»</p>
+            {% endif %}
+
             {% if artist.bio %}
                 <div class="artist-bio">{{ artist.bio|linebreaks }}</div>
             {% else %}
