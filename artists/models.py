@@ -25,6 +25,10 @@ class Artwork(models.Model):
     description = models.TextField(blank=True)  # описание
     image = models.ImageField(upload_to='artworks/')  # фото работы
     price = models.CharField(max_length=100, blank=True)  # цена (опционально)
+    designed_by = models.ManyToManyField(Artist, blank=True, related_name='designed_artworks')
+    made_by = models.ManyToManyField(Artist, blank=True, related_name='made_artworks')
+    designed_by_workshops = models.ManyToManyField('Workshop', blank=True, related_name='designed_artworks')
+    made_by_workshops = models.ManyToManyField('Workshop', blank=True, related_name='made_artworks')
 
     def __str__(self):
         return f"{self.title} — {self.artist.name}"

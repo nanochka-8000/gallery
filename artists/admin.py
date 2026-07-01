@@ -25,7 +25,7 @@ class ArtworkAdmin(admin.ModelAdmin):
     search_fields = ['title', 'artist__name']
     list_filter = ['artist']
     inlines = [ArtworkImageInline]
-
+    filter_horizontal = ['designed_by', 'made_by', 'designed_by_workshops', 'made_by_workshops']
 
 @admin.register(ArtworkImage)
 class ArtworkImageAdmin(admin.ModelAdmin):
