@@ -28,13 +28,18 @@
         </div>
 
         <div class="artwork-info">
-            <a href="/artists/{{ artwork.artist.id }}/" class="back-link">&larr; {{ artwork.artist.name }}</a>
+            {% with first_author=artwork.designed_by.first|default:artwork.made_by.first %}
+                {% if first_author %}
+                    <a href="/artists/{{ first_author.id }}/" class="back-link">&larr; {{ first_author.name }}</a>
+                {% else %}
+                    <a href="/artists/" class="back-link">&larr; Все мастера</a>
+                {% endif %}
+            {% endwith %}
 
             <span class="page-tag">Работа</span>
             <h1 class="artist-name">{{ artwork.title }}</h1>
 
             <div class="artwork-meta-block">
-                <p class="artwork-meta">{{ artwork.artist.name }}</p>
                 {% if artwork.year %}<p class="artwork-meta">{{ artwork.year }}</p>{% endif %}
                 {% if artwork.medium %}<p class="artwork-meta">{{ artwork.medium }}</p>{% endif %}
                 {% if artwork.weight %}<p class="artwork-meta">{{ artwork.weight }}</p>{% endif %}

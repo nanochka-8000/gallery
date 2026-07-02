@@ -22,12 +22,28 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Artwork)
 class ArtworkAdmin(admin.ModelAdmin):
+<<<<<<< HEAD
     list_display = ['title', 'artist', 'year', 'medium', 'status']
     search_fields = ['title', 'artist__name']
     list_filter = ['artist', 'status']
     inlines = [ArtworkImageInline]
     filter_horizontal = ['designed_by', 'made_by', 'designed_by_workshops', 'made_by_workshops']
 
+=======
+    list_display = ['title', 'get_authors', 'year', 'medium']
+    search_fields = ['title', 'designed_by__name', 'made_by__name']
+    list_filter = ['designed_by', 'made_by']
+    inlines = [ArtworkImageInline]
+    filter_horizontal = ['designed_by', 'made_by', 'designed_by_workshops', 'made_by_workshops']
+
+    def get_authors(self, obj):
+        designers = list(obj.designed_by.values_list('name', flat=True))
+        makers = list(obj.made_by.values_list('name', flat=True))
+        all_authors = designers + [m for m in makers if m not in designers]
+        return ", ".join(all_authors) or "—"
+    get_authors.short_description = 'Авторы'
+
+>>>>>>> e43b2ddf9de039fabe7de76b494e3d41df4ef3a3
 
 @admin.register(ArtworkImage)
 class ArtworkImageAdmin(admin.ModelAdmin):
