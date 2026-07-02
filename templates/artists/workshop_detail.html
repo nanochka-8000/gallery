@@ -12,7 +12,6 @@
         <div class="artist-hero-placeholder"></div>
     {% endif %}
     <div class="artist-hero-overlay">
-{#        <span class="hero-tag">TUMAR ART GROUP</span>#}
         <h1 class="artist-hero-name">{{ workshop.name }}</h1>
         {% if workshop.subtitle %}
             <p class="artist-hero-medium">{{ workshop.subtitle }}</p>
@@ -74,11 +73,22 @@
         {% if members %}
             {% for member in members %}
             <div class="workshop-member">
-                <h3 class="workshop-member-name">{{ member.name }}</h3>
+                {% if member.role %}
+                    <span class="card-tag">{{ member.role }}</span>
+                {% endif %}
+                {% if member.artist %}
+                    <h3 class="workshop-member-name">
+                        <a href="/artists/{{ member.artist.id }}/" class="artwork-credit-link">{{ member.name }}</a>
+                    </h3>
+                {% else %}
+                    <h3 class="workshop-member-name">{{ member.name }}</h3>
+                {% endif %}
                 {% if member.quote %}
                     <p class="workshop-member-quote">«{{ member.quote }}»</p>
                 {% endif %}
-                <div class="workshop-member-bio">{{ member.bio|linebreaks }}</div>
+                {% if member.bio %}
+                    <div class="workshop-member-bio">{{ member.bio|linebreaks }}</div>
+                {% endif %}
             </div>
             {% endfor %}
         {% else %}

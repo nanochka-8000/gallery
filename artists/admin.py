@@ -10,6 +10,7 @@ class ArtworkImageInline(admin.TabularInline):
 class WorkshopMemberInline(admin.TabularInline):
     model = WorkshopMember
     extra = 1
+    fields = ['name', 'role', 'artist', 'quote', 'bio', 'photo']
 
 
 @admin.register(Artist)
@@ -21,11 +22,12 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Artwork)
 class ArtworkAdmin(admin.ModelAdmin):
-    list_display = ['title', 'artist', 'year', 'medium']
+    list_display = ['title', 'artist', 'year', 'medium', 'status']
     search_fields = ['title', 'artist__name']
-    list_filter = ['artist']
+    list_filter = ['artist', 'status']
     inlines = [ArtworkImageInline]
     filter_horizontal = ['designed_by', 'made_by', 'designed_by_workshops', 'made_by_workshops']
+
 
 @admin.register(ArtworkImage)
 class ArtworkImageAdmin(admin.ModelAdmin):

@@ -30,6 +30,13 @@ class Artwork(models.Model):
     designed_by_workshops = models.ManyToManyField('Workshop', blank=True, related_name='designed_artworks')
     made_by_workshops = models.ManyToManyField('Workshop', blank=True, related_name='made_artworks')
 
+    STATUS_CHOICES = [
+        ('available', 'В наличии'),
+        ('sold', 'Продано'),
+        ('reserved', 'Зарезервировано'),
+    ]
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='available')
+
     def __str__(self):
         return f"{self.title} — {self.artist.name}"
     
@@ -50,6 +57,9 @@ class WorkshopMember(models.Model):
     bio = models.TextField(blank=True)  # bio члена семьи
     quote = models.CharField(max_length=300, blank=True)  # цитата
     photo = models.ImageField(upload_to='workshop_members/', blank=True)
+    artist = models.ForeignKey('Artist', on_delete=models.SET_NULL, null=True, blank=True,
+                               related_name='workshop_memberships')
+    role = models.CharField(max_length=100, blank=True)  # Куратор, Мастер и т.д.
     
     def __str__(self):
         return f"{self.name} — {self.workshop.name}"

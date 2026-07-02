@@ -1151,7 +1151,32 @@ body {
     }
 }
 
+.artwork-credit-link {
+    color: var(--dark);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.2s;
+}
 
+.artwork-credit-link:hover {
+    color: var(--gold);
+}
+
+
+.artwork-status {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--grey-1);
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 0;
+    background: none;
+}
+
+.artwork-status--available { color: var(--dark); }
+.artwork-status--sold { color: var(--grey-1); }
+.artwork-status--reserved { color: var(--grey-1); }
 
 
 /* RESPONSIVE */
