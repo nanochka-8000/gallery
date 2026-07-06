@@ -10,7 +10,6 @@ class ArtworkImageInline(admin.TabularInline):
 class WorkshopMemberInline(admin.TabularInline):
     model = WorkshopMember
     extra = 1
-    fields = ['name', 'role', 'artist', 'quote', 'bio', 'photo']
 
 
 @admin.register(Artist)
@@ -22,14 +21,6 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Artwork)
 class ArtworkAdmin(admin.ModelAdmin):
-<<<<<<< HEAD
-    list_display = ['title', 'artist', 'year', 'medium', 'status']
-    search_fields = ['title', 'artist__name']
-    list_filter = ['artist', 'status']
-    inlines = [ArtworkImageInline]
-    filter_horizontal = ['designed_by', 'made_by', 'designed_by_workshops', 'made_by_workshops']
-
-=======
     list_display = ['title', 'get_authors', 'year', 'medium']
     search_fields = ['title', 'designed_by__name', 'made_by__name']
     list_filter = ['designed_by', 'made_by']
@@ -43,7 +34,6 @@ class ArtworkAdmin(admin.ModelAdmin):
         return ", ".join(all_authors) or "—"
     get_authors.short_description = 'Авторы'
 
->>>>>>> e43b2ddf9de039fabe7de76b494e3d41df4ef3a3
 
 @admin.register(ArtworkImage)
 class ArtworkImageAdmin(admin.ModelAdmin):
