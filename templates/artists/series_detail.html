@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ series.title }} — АК Галерея{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <span class="page-tag">Серия{% if series.year %} · {{ series.year }}{% endif %}</span>
+    <h1 class="page-title">{{ series.title }}</h1>
+    {% if series.description %}
+        <p style="margin-top: 16px; font-size: 15px; color: var(--grey-1); max-width: 600px;">{{ series.description }}</p>
+    {% endif %}
+</div>
+
+<section class="artists-section" style="padding-top: 48px;">
+    <div class="artworks-grid">
+        {% for artwork in artworks %}
+        <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
+            {% if artwork.image %}
+                <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+            {% else %}
+                <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
+            {% endif %}
+            <div class="card-body">
+                <h3 class="artwork-title">{{ artwork.title }}</h3>
+                <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
+                {% if artwork.price %}
+                    <p class="artwork-meta" style="color:var(--black);">{{ artwork.price }}</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

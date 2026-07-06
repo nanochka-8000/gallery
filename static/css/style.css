@@ -1178,6 +1178,89 @@ body {
 .artwork-status--sold { color: var(--grey-1); }
 .artwork-status--reserved { color: var(--grey-1); }
 
+/* ARTIST HERO SPLIT */
+.artist-hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 50vh;
+}
+
+.artist-hero-left {
+    background: var(--black);
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.artist-hero-logo img {
+    width: 60px;
+}
+
+.artist-hero-name-split {
+    font-family: var(--font-sans);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    word-spacing: 9999px;
+}
+
+.artist-hero-right {
+    overflow: hidden;
+}
+
+.artist-hero-photo-split {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* ARTIST BIO SPLIT */
+.artist-bio-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.artist-bio-quote {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--dark);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.artist-bio-photo {
+    width: 100%;
+    object-fit: cover;
+}
+
+.artist-bio-medium {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--grey-1);
+    margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+    .artist-hero-split {
+        grid-template-columns: 1fr;
+    }
+    .artist-hero-right {
+        height: 300px;
+    }
+    .artist-bio-split {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

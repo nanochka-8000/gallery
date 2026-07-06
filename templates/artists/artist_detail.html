@@ -26,7 +26,27 @@
     </div>
 
     <div id="artworks-panel" class="artist-panel artist-panel--active">
-        {% if artworks %}
+    {% if series_list %}
+        <div class="artworks-grid" style="margin-bottom: 48px;">
+            {% for s in series_list %}
+            <a href="/artists/series/{{ s.id }}/" class="artwork-card">
+                {% if s.cover_image %}
+                    <img src="{{ s.cover_image.url }}" alt="{{ s.title }}">
+                {% else %}
+                    <div style="aspect-ratio:1/1;background:var(--grey-3);display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--grey-1);">Серия</span>
+                    </div>
+                {% endif %}
+                <div class="card-body">
+                    <h3 class="artwork-title">{{ s.title }}</h3>
+                    {% if s.year %}<p class="artwork-meta">{{ s.year }}</p>{% endif %}
+                    <p class="artwork-meta">{{ s.artworks.count }} работ</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if artworks %}
             <div class="artworks-grid">
                 {% for artwork in artworks %}
                 <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">

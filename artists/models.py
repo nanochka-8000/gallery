@@ -33,13 +33,22 @@ class WorkshopMember(models.Model):
     bio = models.TextField(blank=True)
     quote = models.CharField(max_length=300, blank=True)
     photo = models.ImageField(upload_to='workshop_members/', blank=True)
+    artist = models.ForeignKey('Artist', on_delete=models.SET_NULL, null=True, blank=True,
+                               related_name='workshop_memberships')
+    role = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return f"{self.name} — {self.workshop.name}"
 
 
 class Artwork(models.Model):
+    STATUS_CHOICES = [
+        ('available', 'В наличии'),
+        ('sold', 'Продано'),
+        ('reserved', 'Зарезервировано'),
+    ]
     title = models.CharField(max_length=200)
+    series = models.ForeignKey('Series', on_delete=models.SET_NULL, null=True, blank=True, related_name='artworks')
     year = models.IntegerField(blank=True, null=True)
     medium = models.CharField(max_length=200, blank=True)
     weight = models.CharField(max_length=100, blank=True)
@@ -47,14 +56,13 @@ class Artwork(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='artworks/')
     price = models.CharField(max_length=100, blank=True)
-
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='available')
     designed_by = models.ManyToManyField(Artist, blank=True, related_name='designed_artworks')
     made_by = models.ManyToManyField(Artist, blank=True, related_name='made_artworks')
     designed_by_workshops = models.ManyToManyField(Workshop, blank=True, related_name='designed_artworks')
     made_by_workshops = models.ManyToManyField(Workshop, blank=True, related_name='made_artworks')
 
     def __str__(self):
-        # собираем всех авторов для читаемого отображения в админке
         designers = list(self.designed_by.values_list('name', flat=True))
         makers = list(self.made_by.values_list('name', flat=True))
         all_authors = designers + [m for m in makers if m not in designers]
@@ -72,3 +80,12 @@ class ArtworkImage(models.Model):
 
     def __str__(self):
         return f"Фото {self.order} — {self.artwork.title}"
+
+class Series(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    cover_image = models.ImageField(upload_to='series/', blank=True)
+    year = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title

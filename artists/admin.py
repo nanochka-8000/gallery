@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Artist, Artwork, ArtworkImage, Workshop, WorkshopMember
+from .models import Artist, Artwork, ArtworkImage, Workshop, WorkshopMember, Series
 
 
 class ArtworkImageInline(admin.TabularInline):
@@ -10,6 +10,7 @@ class ArtworkImageInline(admin.TabularInline):
 class WorkshopMemberInline(admin.TabularInline):
     model = WorkshopMember
     extra = 1
+    fields = ['name', 'role', 'artist', 'quote', 'bio', 'photo']
 
 
 @admin.register(Artist)
@@ -21,9 +22,9 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Artwork)
 class ArtworkAdmin(admin.ModelAdmin):
-    list_display = ['title', 'get_authors', 'year', 'medium']
+    list_display = ['title', 'get_authors', 'year', 'medium', 'status']
     search_fields = ['title', 'designed_by__name', 'made_by__name']
-    list_filter = ['designed_by', 'made_by']
+    list_filter = ['status', 'designed_by', 'made_by']
     inlines = [ArtworkImageInline]
     filter_horizontal = ['designed_by', 'made_by', 'designed_by_workshops', 'made_by_workshops']
 
@@ -44,3 +45,8 @@ class ArtworkImageAdmin(admin.ModelAdmin):
 class WorkshopAdmin(admin.ModelAdmin):
     list_display = ['name', 'city']
     inlines = [WorkshopMemberInline]
+
+@admin.register(Series)
+class SeriesAdmin(admin.ModelAdmin):
+    list_display = ['title', 'year']
+    search_fields = ['title']
