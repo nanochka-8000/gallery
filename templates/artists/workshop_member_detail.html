@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ member.name }} — АК Галерея{% endblock %}
+
+{% block content %}
+
+<section class="artist-hero-fullscreen">
+    {% if member.photo %}
+        <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="artist-hero-image">
+    {% else %}
+        <div class="artist-hero-placeholder"></div>
+    {% endif %}
+    <div class="artist-hero-overlay">
+        <h1 class="artist-hero-name">{{ member.name }}</h1>
+    </div>
+</section>
+
+<section class="artist-tabs-section">
+    <div class="artist-bio-block">
+        <h2 class="artist-bio-heading">О мастере</h2>
+
+        {% if member.quote %}
+            <p class="workshop-member-quote">«{{ member.quote }}»</p>
+        {% endif %}
+
+        {% if member.bio %}
+            <div class="artist-bio">{{ member.bio|linebreaks }}</div>
+        {% else %}
+            <p class="empty-state">Биография скоро появится.</p>
+        {% endif %}
+
+        <div class="artist-contact-block">
+            <button class="btn-outline" onclick="openContactModal()">
+                Связаться с галереей
+            </button>
+        </div>
+    </div>
+</section>
+
+<div id="contact-modal" class="contact-modal">
+    <div class="contact-modal-overlay" onclick="closeContactModal()"></div>
+    <div class="contact-modal-content">
+        <button class="contact-modal-close" onclick="closeContactModal()">×</button>
+        <span class="card-tag">Контакты галереи</span>
+        <h2 class="artist-bio-heading">Свяжитесь с нами</h2>
+        <p class="artist-bio">Выберите удобный способ связи — мы ответим в течение 24 часов.</p>
+
+        <div class="contact-methods">
+            <a href="mailto:info@akgallery.kg?subject=Запрос про мастера {{ member.name }}" class="contact-method">
+                <span class="contact-method-label">Email</span>
+                <span class="contact-method-value">info@akgallery.kg</span>
+            </a>
+
+            <a href="https://wa.me/996555000000" target="_blank" class="contact-method">
+                <span class="contact-method-label">WhatsApp</span>
+                <span class="contact-method-value">+996 555 000 000</span>
+            </a>
+
+            <a href="tel:+996555000000" class="contact-method">
+                <span class="contact-method-label">Телефон</span>
+                <span class="contact-method-value">+996 555 000 000</span>
+            </a>
+
+            <a href="https://www.instagram.com/" target="_blank" class="contact-method">
+                <span class="contact-method-label">Instagram</span>
+                <span class="contact-method-value">@akgallery</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+function openContactModal() {
+    document.getElementById('contact-modal').classList.add('contact-modal--open');
+}
+
+function closeContactModal() {
+    document.getElementById('contact-modal').classList.remove('contact-modal--open');
+}
+</script>
+
+{% endblock %}

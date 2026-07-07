@@ -56,7 +56,7 @@
 
                 {% if artwork.made_by.all or artwork.made_by_workshops.all %}
                 <p class="artwork-meta">
-                    <span style="color:var(--grey-1);">Изготовлено: </span>
+                    <span style="color:var(--grey-1);">Исполнение: </span>
                     {% for a in artwork.made_by.all %}{{ a.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
                     {% if artwork.made_by.all and artwork.made_by_workshops.all %}, {% endif %}
                     {% for w in artwork.made_by_workshops.all %}{{ w.name }}{% if not forloop.last %}, {% endif %}{% endfor %}

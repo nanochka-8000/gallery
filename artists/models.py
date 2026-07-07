@@ -4,6 +4,7 @@ from django.db import models
 class Artist(models.Model):
     name = models.CharField(max_length=200)
     order = models.IntegerField(default=0)
+    is_published = models.BooleanField(default=True, verbose_name='Показывать на сайте')
     bio = models.TextField(blank=True)
     quote = models.CharField(max_length=300, blank=True)
     photo = models.ImageField(upload_to='artists/')
@@ -17,8 +18,8 @@ class Artist(models.Model):
 
 class Workshop(models.Model):
     name = models.CharField(max_length=200)
-    subtitle = models.CharField(max_length=200, blank=True)
     bio = models.TextField(blank=True)
+    is_published = models.BooleanField(default=True, verbose_name='Показывать на сайте')
     photo = models.ImageField(upload_to='workshops/', blank=True)
     city = models.CharField(max_length=100, blank=True)
     qr_code = models.ImageField(upload_to='qr_codes/', blank=True)
@@ -29,6 +30,7 @@ class Workshop(models.Model):
 
 class WorkshopMember(models.Model):
     workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE, related_name='members')
+    is_published = models.BooleanField(default=True, verbose_name='Показывать на сайте')
     name = models.CharField(max_length=200)
     bio = models.TextField(blank=True)
     quote = models.CharField(max_length=300, blank=True)
@@ -54,7 +56,6 @@ class Artwork(models.Model):
     made_by_workshops = models.ManyToManyField(Workshop, blank=True, related_name='made_artworks')
 
     def __str__(self):
-        # собираем всех авторов для читаемого отображения в админке
         designers = list(self.designed_by.values_list('name', flat=True))
         makers = list(self.made_by.values_list('name', flat=True))
         all_authors = designers + [m for m in makers if m not in designers]

@@ -13,9 +13,6 @@
     {% endif %}
     <div class="artist-hero-overlay">
         <h1 class="artist-hero-name">{{ workshop.name }}</h1>
-        {% if workshop.subtitle %}
-            <p class="artist-hero-medium">{{ workshop.subtitle }}</p>
-        {% endif %}
     </div>
 </section>
 
@@ -53,7 +50,6 @@
 
     <div id="about-panel" class="artist-panel">
         <div class="artist-bio-block">
-            <span class="card-tag">TUMAR ART GROUP</span>
             <h2 class="artist-bio-heading">О мастерской</h2>
             {% if workshop.bio %}
                 <div class="artist-bio">{{ workshop.bio|linebreaks }}</div>
@@ -71,15 +67,20 @@
 
     <div id="members-panel" class="artist-panel">
         {% if members %}
-            {% for member in members %}
-            <div class="workshop-member">
-                <h3 class="workshop-member-name">{{ member.name }}</h3>
-                {% if member.quote %}
-                    <p class="workshop-member-quote">«{{ member.quote }}»</p>
-                {% endif %}
-                <div class="workshop-member-bio">{{ member.bio|linebreaks }}</div>
+            <div class="artists-grid">
+                {% for member in members %}
+                <a href="/artists/workshop-member/{{ member.id }}/" class="artist-card">
+                    {% if member.photo %}
+                        <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+                    {% else %}
+                        <div class="artist-placeholder" style="aspect-ratio:3/4;background:var(--grey-3);"></div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h2 class="card-name">{{ member.name }}</h2>
+                    </div>
+                </a>
+                {% endfor %}
             </div>
-            {% endfor %}
         {% else %}
             <p class="empty-state">Информация об участниках скоро появится.</p>
         {% endif %}

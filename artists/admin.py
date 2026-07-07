@@ -14,9 +14,9 @@ class WorkshopMemberInline(admin.TabularInline):
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
-    list_display = ['name', 'city', 'medium', 'order']
+    list_display = ['name', 'city', 'medium', 'order', 'is_published']
+    list_editable = ['order', 'is_published']
     search_fields = ['name', 'city']
-    list_editable = ['order']
 
 
 @admin.register(Artwork)
@@ -42,5 +42,6 @@ class ArtworkImageAdmin(admin.ModelAdmin):
 
 @admin.register(Workshop)
 class WorkshopAdmin(admin.ModelAdmin):
-    list_display = ['name', 'city']
+    list_display = ['name', 'city', 'is_published']
+    list_editable = ['is_published']
     inlines = [WorkshopMemberInline]
