@@ -42,6 +42,7 @@ class WorkshopMember(models.Model):
 
 class Artwork(models.Model):
     title = models.CharField(max_length=200)
+    is_published = models.BooleanField(default=True, verbose_name='Показывать на сайте')
     year = models.IntegerField(blank=True, null=True)
     medium = models.CharField(max_length=200, blank=True)
     weight = models.CharField(max_length=100, blank=True)
@@ -49,6 +50,9 @@ class Artwork(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='artworks/')
     price = models.CharField(max_length=100, blank=True)
+    series = models.ForeignKey('Series', on_delete=models.SET_NULL,
+                               blank=True, null=True, related_name='artworks',
+                               verbose_name='Серия')
 
     designed_by = models.ManyToManyField(Artist, blank=True, related_name='designed_artworks')
     made_by = models.ManyToManyField(Artist, blank=True, related_name='made_artworks')
@@ -73,3 +77,34 @@ class ArtworkImage(models.Model):
 
     def __str__(self):
         return f"Фото {self.order} — {self.artwork.title}"
+
+
+class Series(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Название серии')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    cover_image = models.ImageField(upload_to='series/', blank=True,
+                                     verbose_name='Обложка',
+                                     help_text='Если не задано, то возьмётся первая работа серии')
+    order = models.IntegerField(default=0)
+    is_published = models.BooleanField(default=True, verbose_name='Показывать на сайте')
+
+    artists = models.ManyToManyField(Artist, blank=True, related_name='series',
+                                      verbose_name='Мастера')
+    workshops = models.ManyToManyField(Workshop, blank=True, related_name='series',
+                                        verbose_name='Мастерские')
+
+    class Meta:
+        verbose_name = 'Серия'
+        verbose_name_plural = 'Серии'
+        ordering = ['order']
+
+    def __str__(self):
+        return self.title
+
+    def get_cover_url(self):
+        if self.cover_image:
+            return self.cover_image.url
+        first = self.artworks.first()
+        if first and first.image:
+            return first.image.url
+        return None

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ series.title }} — АК Галерея{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">{{ series.title }}</h1>
+    {% if series.description %}
+        <p class="artist-bio" style="max-width:700px;margin:20px auto 0;text-align:center;">
+            {{ series.description|linebreaks }}
+        </p>
+    {% endif %}
+</div>
+
+<section class="artists-section">
+    {% if artworks %}
+        <div class="artworks-grid">
+            {% for artwork in artworks %}
+            <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
+                {% if artwork.image %}
+                    <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+                {% else %}
+                    <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
+                {% endif %}
+                <div class="card-body">
+                    <h3 class="artwork-title">{{ artwork.title }}</h3>
+                    <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
+                    {% if artwork.price %}
+                        <p class="artwork-meta artwork-price-small">{{ artwork.price }}</p>
+                    {% endif %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty-state">В этой серии пока нет работ.</p>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,12 +1,16 @@
-
 venv/
 env/
+.venv/
 
-
-db_old.sqlite3
+db.sqlite3
 db.sqlite3-journal
+db_old.sqlite3
+db_old2.sqlite3
+db_backup*.sqlite3
 
+media/
 media_old/
+media_backup.zip
 
 __pycache__/
 *.pyc

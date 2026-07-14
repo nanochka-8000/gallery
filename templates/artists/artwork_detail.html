@@ -45,22 +45,26 @@
                 {% if artwork.weight %}<p class="artwork-meta">{{ artwork.weight }}</p>{% endif %}
                 {% if artwork.dimensions %}<p class="artwork-meta">{{ artwork.dimensions }}</p>{% endif %}
 
-                {% if artwork.designed_by.all or artwork.designed_by_workshops.all %}
-                <p class="artwork-meta" style="margin-top:12px;">
-                    <span style="color:var(--grey-1);">Дизайн: </span>
-                    {% for a in artwork.designed_by.all %}{{ a.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                    {% if artwork.designed_by.all and artwork.designed_by_workshops.all %}, {% endif %}
-                    {% for w in artwork.designed_by_workshops.all %}{{ w.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                </p>
-                {% endif %}
+                {% if artwork.designed_by.all or artwork.designed_by_workshops.all or artwork.made_by.all or artwork.made_by_workshops.all %}
+                <div style="margin-top:20px;">
+                    {% if artwork.designed_by.all or artwork.designed_by_workshops.all %}
+                    <p class="artwork-meta">
+                        <span style="color:var(--grey-1);">Дизайн: </span>
+                        {% for a in artwork.designed_by.all %}{{ a.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                        {% if artwork.designed_by.all and artwork.designed_by_workshops.all %}, {% endif %}
+                        {% for w in artwork.designed_by_workshops.all %}{{ w.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </p>
+                    {% endif %}
 
-                {% if artwork.made_by.all or artwork.made_by_workshops.all %}
-                <p class="artwork-meta">
-                    <span style="color:var(--grey-1);">Исполнение: </span>
-                    {% for a in artwork.made_by.all %}{{ a.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                    {% if artwork.made_by.all and artwork.made_by_workshops.all %}, {% endif %}
-                    {% for w in artwork.made_by_workshops.all %}{{ w.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                </p>
+                    {% if artwork.made_by.all or artwork.made_by_workshops.all %}
+                    <p class="artwork-meta">
+                        <span style="color:var(--grey-1);">Исполнение: </span>
+                        {% for a in artwork.made_by.all %}{{ a.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                        {% if artwork.made_by.all and artwork.made_by_workshops.all %}, {% endif %}
+                        {% for w in artwork.made_by_workshops.all %}{{ w.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </p>
+                    {% endif %}
+                </div>
                 {% endif %}
 
                 {% if artwork.price %}
@@ -74,7 +78,6 @@
 
             <div class="qr-info">
                 <button class="inquiry-btn" onclick="openContactModal()">Узнать о покупке &rarr;</button>
-                <span class="qr-note">Эта страница открывается по QR-коду под работой</span>
             </div>
         </div>
     </div>
