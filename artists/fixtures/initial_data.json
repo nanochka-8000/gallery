@@ -195,11 +195,11 @@
   "model": "artists.workshop",
   "pk": 2,
   "fields": {
-    "name": "Мастерская Даурона Панаева",
+    "name": "Мастерская «Айсанем»",
     "bio": "Ковровая мастерская в Нукусе работает с 2019 года и ставит перед собой задачу восстановить угасающую культуру каракалпакского ковроделия. В основе подхода - принципиальный выбор в пользу местного сырья: вся работа строится вокруг каракалпакской овечьей шерсти, ресурса, который веками был у региона под рукой, но почти выпал из современного производства.\r\nПолный цикл сосредоточен в Нукусе. Здесь шерсть сортируют и промывают. Очищенное сырьё передаётся сельским мастерицам, которые прядут нити на станках. Дальше - только руки: ковёр размером 1,5 на 2 метра рождается около трёх месяцев непрерывной работы.\r\nСердце направления - команда из двенадцати человек под руководством мастерицы Зульфии апы, носительницы традиций ковроделия советской школы. Под её началом работают одиннадцать женщин, а сама мастерская сотрудничает с мастерицами из отдалённых районов, выстраивая сеть локальной кооперации и создавая рабочие места там, где их остро не хватает.\r\nВ основе изделий лежат традиционные каракалпакские техники. Мастера возрождают гладкое ткачество такыр килем и восстанавливают технологию плетения юртовых лент - баскуров, практически утраченную со времён Средневековья. Её особенность в том, что сложный рисунок - например, цветные нити на белом фоне — выводится только на лицевую сторону, тогда как изнанка остаётся чистой и однотонной.\r\nПри этом мастерская не копирует прошлое, а переосмысляет его для современного интерьера. Ковры создаются в спокойных оттенках неокрашенной шерсти, без искусственных красителей, и сочетают ворсовые и безворсовые элементы. Рельефная, тактильная поверхность становится художественным языком, в котором читается география Каракалпакстана: песчаные пейзажи, плато, неровные линии горизонта. Орнамент уступает место абстракции, оставляя зрителю пространство для собственного прочтения.",
     "is_published": true,
     "photo": "",
-    "city": "Каракалпакстан",
+    "city": "Нукус, Каракалпакстан",
     "qr_code": ""
   }
 },
@@ -236,6 +236,42 @@
     "is_published": true,
     "photo": "",
     "city": "Бишкек",
+    "qr_code": ""
+  }
+},
+{
+  "model": "artists.workshop",
+  "pk": 6,
+  "fields": {
+    "name": "Мастерская Жузимгуль Алимбетовой",
+    "bio": "",
+    "is_published": true,
+    "photo": "",
+    "city": "Каракалпакстан",
+    "qr_code": ""
+  }
+},
+{
+  "model": "artists.workshop",
+  "pk": 7,
+  "fields": {
+    "name": "Мастерская «Tumar»",
+    "bio": "",
+    "is_published": true,
+    "photo": "",
+    "city": "",
+    "qr_code": ""
+  }
+},
+{
+  "model": "artists.workshop",
+  "pk": 8,
+  "fields": {
+    "name": "Меховая фабрика «Алия»",
+    "bio": "",
+    "is_published": false,
+    "photo": "",
+    "city": "",
     "qr_code": ""
   }
 },
@@ -342,7 +378,7 @@
     "year": 2026,
     "medium": "карагач",
     "weight": "0.74 кг",
-    "dimensions": "22,5 x 12,5 x 14 см",
+    "dimensions": "22.5 x 12.5 x 14 см",
     "description": "Эта работа - современная интерпретация классического кыргызского сундучка үкөк, исторически служившего для бережного хранения припасов в юрте.\r\n\r\nИзделие выполнено из массива карагача (кара жыгач). Лицевая панель декорирована тонкой резьбой, где традиционные солярные символы деликатно интегрированы в лаконичную форму. Глубокая ручная пропитка натуральными маслами и воском подчеркивает благородный рисунок дерева и создает теплую, живую фактуру.\r\n\r\nВ современном интерьере предмет выходит за рамки утилитарности, становясь самодостаточным акцентом, транслирующим наш культурный код.",
     "image": "artworks/DSC06916_2.jpg",
     "price": "11 250 сом",
@@ -746,7 +782,7 @@
     "year": 2026,
     "medium": "тополь",
     "weight": "0.54 кг",
-    "dimensions": "34,5 x 24,5 см",
+    "dimensions": "34.5 x 24.5 см",
     "description": "Лошадь - главный символ кочевой культуры, олицетворение степной свободы и жизненной энергии. В этой работе образ передан через сложную пластику скифского «звериного стиля». Характерное для этого направления выкручивание фигуры и напряженные линии передают скрытую динамику и первозданную мощь животного.\r\n\r\nСкульптура вырезана из цельного массива тополя. Использование техники патинирования направлено на работу с объемом: пигмент деликатно подчеркивает рельефность формы, выделяя каждый изгиб и придавая силуэту визуальную глубину.\r\n\r\nВ современном пространстве этот предмет выступает как самодостаточный акцент, наполняющий интерьер энергией и выразительной графичной фактурой.",
     "image": "artworks/DSC06429_2.jpg",
     "price": "12 750 сом",
@@ -790,7 +826,7 @@
     "year": 2026,
     "medium": "дерево, ювелирная смола",
     "weight": "",
-    "dimensions": "9,5 x 27 x 6 см",
+    "dimensions": "9.5 x 27 x 6 см",
     "description": "Этот объект - застывший фрагмент природной стихии. Основой для светильника послужил ветхий фрагмент древесины, найденный в горах. В соединении с эпоксидной смолой форма рождает ассоциацию с мистическим, почти космическим свечением, пробивающимся сквозь глубокие горные расщелины.\r\n\r\nВизуальная глубина изделия достигается за счет сложной техники многослойной заливки (около 10 этапов), которая формирует трехмерный оптический эффект. Техническое исполнение продумано для комфортной интеграции в быт: встроенная лампа абсолютно пожаробезопасна и не нагревается выше 40 градусов.\r\n\r\nВ современном интерьере светильник работает как камерный световой арт-объект, объединяющий дикую природную фактуру и атмосферное, медитативное свечение.",
     "image": "artworks/DSC06950_1.jpg",
     "price": "11 250 сом",
@@ -907,7 +943,7 @@
     "medium": "шерсть",
     "weight": "",
     "dimensions": "302 x 188 см",
-    "description": "",
+    "description": "Wv-257.1",
     "image": "artworks/DSC06741.jpg",
     "price": "91 978.20 сом",
     "series": null,
@@ -916,6 +952,1014 @@
     "designed_by_workshops": [],
     "made_by_workshops": [
       1
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 30,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 1",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "1.7 кг",
+    "dimensions": "107 x 62 см",
+    "description": "wv-254.1",
+    "image": "artworks/DSC06721_1.jpg",
+    "price": "10 215 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 31,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "1.95 кг",
+    "dimensions": "108 x 62 сом",
+    "description": "wv-254.2",
+    "image": "artworks/DSC06723_1.jpg",
+    "price": "10 305 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 32,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 3",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "4.4 кг",
+    "dimensions": "158 x 100 см",
+    "description": "wv-254.3",
+    "image": "artworks/DSC06696.jpg",
+    "price": "24 318 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 33,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 4",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "4.3 кг",
+    "dimensions": "167 x 112 см",
+    "description": "wv-254.4",
+    "image": "artworks/DSC06688.jpg",
+    "price": "28 782 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 34,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 5",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "4.8 кг",
+    "dimensions": "174 x 98 см",
+    "description": "wv-254.5",
+    "image": "artworks/DSC06709.jpg",
+    "price": "26 244 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 35,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 6",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "5.4 кг",
+    "dimensions": "178 x 104 см",
+    "description": "wv-254.6",
+    "image": "artworks/DSC06881_1.jpg",
+    "price": "28 494 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 36,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 7",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "5.3 кг",
+    "dimensions": "180 х 109 см",
+    "description": "wv-254.7",
+    "image": "artworks/DSC06885_1.jpg",
+    "price": "30 195 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 37,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 8",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "5.5 кг",
+    "dimensions": "188 x 114 см",
+    "description": "wv-254.8",
+    "image": "artworks/DSC06694_1.jpg",
+    "price": "32 985 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 38,
+  "fields": {
+    "title": "Ворсовой ковер \"Босого\" 9",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "6.35 кг",
+    "dimensions": "195 х 138 см",
+    "description": "wv-254.9",
+    "image": "artworks/DSC06713_1.jpg",
+    "price": "41 418 сом",
+    "series": 4,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 39,
+  "fields": {
+    "title": "Циновка «Шипта»",
+    "is_published": true,
+    "year": 2026,
+    "medium": "тростник",
+    "weight": "11.4 кг",
+    "dimensions": "383 х 236 см",
+    "description": "Традиционно шипта служила базовым элементом кочевого жилища - теплоизоляционной и смягчающей прослойкой между землей и войлочными коврами юрты. В современном прочтении этот аутентичный предмет выходит за рамки утилитарности. Честная природная фактура материала привносит в интерьер ощущение воздуха и простора, становясь выразительной и экологичной базой для многослойных пространственных решений.",
+    "image": "artworks/photo_5384419638382369030_m.jpg",
+    "price": "0.00",
+    "series": null,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      6
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 40,
+  "fields": {
+    "title": "Циновка «Ший» 1",
+    "is_published": true,
+    "year": 2026,
+    "medium": "рогоз (камыш)",
+    "weight": "13.45 кг",
+    "dimensions": "489 х 160 см",
+    "description": "",
+    "image": "artworks/photo_5384419638382369028_m.jpg",
+    "price": "0.00",
+    "series": 5,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      6
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 41,
+  "fields": {
+    "title": "Циновка «Ший» 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "рогоз (камыш)",
+    "weight": "15.45 кг",
+    "dimensions": "158 х 158 см",
+    "description": "",
+    "image": "artworks/photo_5384419638382369033_m.jpg",
+    "price": "0.00",
+    "series": 5,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      6
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 42,
+  "fields": {
+    "title": "Плед \"ЗВЕЗДЫ\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин",
+    "weight": "3.5 кг",
+    "dimensions": "226 х 208 см",
+    "description": "IT -89.1",
+    "image": "artworks/DSC06639.jpg",
+    "price": "83 754 сом",
+    "series": 6,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 43,
+  "fields": {
+    "title": "Плед \"Ромб\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин, икат, ручная вышивка",
+    "weight": "3.7 кг",
+    "dimensions": "240 х 200 см",
+    "description": "IT-90.1",
+    "image": "artworks/DSC06632.jpg",
+    "price": "87 354 сом",
+    "series": 6,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 44,
+  "fields": {
+    "title": "Плед",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин",
+    "weight": "3.4 кг",
+    "dimensions": "228 х 206 см",
+    "description": "IT -91.1",
+    "image": "artworks/DSC06646_1.jpg",
+    "price": "98 154 сом",
+    "series": 6,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 45,
+  "fields": {
+    "title": "Төшөк горчичный",
+    "is_published": true,
+    "year": 2026,
+    "medium": "бархат, курак каркыра - х/б, шерсть",
+    "weight": "4.15 кг",
+    "dimensions": "215 х 70 см",
+    "description": "IT-92.1",
+    "image": "artworks/DSC06656_1.jpg",
+    "price": "31 914 сом",
+    "series": 7,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 47,
+  "fields": {
+    "title": "Валик горчичный \"Курак\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "бархат, х/б, синтепон",
+    "weight": "0.8 кг",
+    "dimensions": "30 х 58 см",
+    "description": "IT-93.1",
+    "image": "artworks/DSC06756_1.jpg",
+    "price": "7 218 сом",
+    "series": 8,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": []
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 48,
+  "fields": {
+    "title": "Төшөк синий",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, икат, курак каркыра - х/б, шерсть",
+    "weight": "4.65 кг",
+    "dimensions": "250 х 70 см",
+    "description": "IT-94.1",
+    "image": "artworks/DSC06654_1.jpg",
+    "price": "33 714 сом",
+    "series": 7,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": []
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 49,
+  "fields": {
+    "title": "валик синий \"Курак\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "бархат, х/б, синтепон",
+    "weight": "0.8 кг",
+    "dimensions": "30 х 58 см",
+    "description": "IT-95.1",
+    "image": "artworks/DSC06764_1.jpg",
+    "price": "7 974 сом",
+    "series": 8,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 50,
+  "fields": {
+    "title": "Төшөк красный",
+    "is_published": true,
+    "year": 2026,
+    "medium": "плюш, стрелка ромб - х/б, шерсть",
+    "weight": "4 кг",
+    "dimensions": "205 х 70 см",
+    "description": "IT-96.1",
+    "image": "artworks/DSC06665_1_Iomk2J3.jpg",
+    "price": "31 914 сом",
+    "series": 7,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 51,
+  "fields": {
+    "title": "Наволочка \"Курак\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "плюш, х/б, синтепон",
+    "weight": "1 кг",
+    "dimensions": "70 х 50 см",
+    "description": "IT-97.1",
+    "image": "artworks/DSC06776_1.jpg",
+    "price": "8 982 сом",
+    "series": 8,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 52,
+  "fields": {
+    "title": "Курак текче \"Көз\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, икат, курак каркыра, курак глазки",
+    "weight": "1.2 кг",
+    "dimensions": "172 х 96 см",
+    "description": "IT-98.1\r\nВ основе визуального решения этого изделия лежит глубокая семантика двух традиционных мотивов. Главный орнамент - көз (глаз), исторически выполняет функцию мощного сакрального оберега, защищающего пространство и его обитателей. Его гармонично обрамляет паттерн турна (дорожка журавлей), который задает текстильному полотну динамичный ритм и отражает непрерывность, свободу кочевого пути.\r\n\r\nСохраняя классическую утилитарную функцию системы хранения, в современном интерьере этот модуль работает как сильный ментальный и визуальный якорь. Строгая, математически выверенная геометрия узоров превращает предмет в графичный акцент, наполняющий дом энергией традиций и чувством защищенности.",
+    "image": "artworks/DSC06648.jpg",
+    "price": "34 740 сом",
+    "series": null,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 53,
+  "fields": {
+    "title": "Туштук \"Ат-жабуу\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин, икат",
+    "weight": "0.9 кг",
+    "dimensions": "148 х 140 см",
+    "description": "IT-99.1",
+    "image": "artworks/DSC06400.jpg",
+    "price": "29 340 сом",
+    "series": 9,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 54,
+  "fields": {
+    "title": "Туштук \"Ат-жабуу\" 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин, курак ромб",
+    "weight": "1 кг",
+    "dimensions": "90 х 120 см",
+    "description": "IT-100.1",
+    "image": "artworks/photo_5386671438196054087_y.jpg",
+    "price": "27 540 сом",
+    "series": 9,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 55,
+  "fields": {
+    "title": "Курак текче \"Каттама\"",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин, бархат, икат",
+    "weight": "0.8 кг",
+    "dimensions": "110 х 80 см",
+    "description": "IT-101.1\r\nРабота воссоздана по мотивам аутентичного лоскутного шитья с фокусом на сложную технику каттама (от кыргызского «кат» - слой), которая придает традиционному текстилю скульптурную выразительность.\r\n\r\nГлавная особенность этого изделия - виртуозное наслоение геометрических фрагментов. Многослойность деталей формирует оптическую глубину и сложный визуальный ритм, приглашающий зрителя к вдумчивому, детальному изучению каждого элемента.\r\n\r\nВ современном интерьере такой модуль работает как  текстильное панно. Сохраняя свою историческую функцию бережного хранения, он становится интеллектуальным акцентом, который притягивает взгляд и требует паузы для созерцания.",
+    "image": "artworks/photo_5386671438196054090_y.jpg",
+    "price": "22 680 сом",
+    "series": null,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 56,
+  "fields": {
+    "title": "Панно «Курак текче» 1",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин, курак каркыра",
+    "weight": "0.5 кг",
+    "dimensions": "88 х 66 сом",
+    "description": "IT-102.1",
+    "image": "artworks/DSC04548_1.jpg",
+    "price": "17 100 сом",
+    "series": 10,
+    "designed_by": [
+      13
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 57,
+  "fields": {
+    "title": "Панно «Курак текче» 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, сатин, курак каркыра",
+    "weight": "0.5 кг",
+    "dimensions": "90 х 70 см",
+    "description": "IT-104.1",
+    "image": "artworks/photo_5384203897880124715_y.jpg",
+    "price": "14 250 сом",
+    "series": 10,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 58,
+  "fields": {
+    "title": "Штора",
+    "is_published": true,
+    "year": 2026,
+    "medium": "х/б, тенсель",
+    "weight": "",
+    "dimensions": "300 х 150 см",
+    "description": "It-105.1",
+    "image": "artworks/photo_5384203897880124722_y.jpg",
+    "price": "4 500 сом",
+    "series": null,
+    "designed_by": [
+      11
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      7
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 59,
+  "fields": {
+    "title": "Туш кийиз 1",
+    "is_published": true,
+    "year": 2026,
+    "medium": "",
+    "weight": "",
+    "dimensions": "344 х 156 см",
+    "description": "Ant-1.1",
+    "image": "artworks/Flower_2.jpg",
+    "price": "49 500 сом",
+    "series": 11,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 60,
+  "fields": {
+    "title": "Туш кийиз 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "",
+    "weight": "",
+    "dimensions": "336 х 164 см",
+    "description": "Ant-2.1",
+    "image": "artworks/Flower_2_IvsRvhw.jpg",
+    "price": "48 000 сом",
+    "series": 11,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 61,
+  "fields": {
+    "title": "Подушка",
+    "is_published": true,
+    "year": 2026,
+    "medium": "",
+    "weight": "",
+    "dimensions": "120 х 45 сом",
+    "description": "Ant-4.1",
+    "image": "artworks/Flower_2_UAnWzbJ.jpg",
+    "price": "7 950 сом",
+    "series": 11,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 62,
+  "fields": {
+    "title": "Валик",
+    "is_published": true,
+    "year": 2026,
+    "medium": "",
+    "weight": "",
+    "dimensions": "60 х 30 см",
+    "description": "Ant-5.1",
+    "image": "artworks/Flower_2_tIub9yw.jpg",
+    "price": "6 900 сом",
+    "series": 11,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 63,
+  "fields": {
+    "title": "Туш кийиз 3",
+    "is_published": true,
+    "year": 2026,
+    "medium": "",
+    "weight": "",
+    "dimensions": "352 х 186 см",
+    "description": "Ant-6.1",
+    "image": "artworks/Flower_2_vyxZ3yk.jpg",
+    "price": "43 500 сом",
+    "series": 11,
+    "designed_by": [],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 64,
+  "fields": {
+    "title": "Меховой ковер «Мамалак» 1",
+    "is_published": true,
+    "year": 2026,
+    "medium": "овечьи шкурки, поролон, лён",
+    "weight": "3.1 кг",
+    "dimensions": "181 х 82 см",
+    "description": "FUR-1.1",
+    "image": "artworks/DSC06680_1.jpg",
+    "price": "34 200 сом",
+    "series": 12,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      8
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 65,
+  "fields": {
+    "title": "Меховой ковер «Мамалак» 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "овечьи шкурки, поролон, лён",
+    "weight": "3.3 кг",
+    "dimensions": "195 х 85 см",
+    "description": "FUR-1.2",
+    "image": "artworks/DSC06676_1.jpg",
+    "price": "34 200 сом",
+    "series": 12,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      8
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 66,
+  "fields": {
+    "title": "Меховой ковер «Мамалак» 3",
+    "is_published": true,
+    "year": 2026,
+    "medium": "овечьи шкурки, поролон, лён",
+    "weight": "3.1 кг",
+    "dimensions": "194 х 84 см",
+    "description": "FUR-1.3",
+    "image": "artworks/photo_5384203897880124774_y.jpg",
+    "price": "34 200 сом",
+    "series": 12,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      8
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 67,
+  "fields": {
+    "title": "Меховой ковер «Мамалак» 4",
+    "is_published": true,
+    "year": 2026,
+    "medium": "овечьи шкурки, поролон, лён",
+    "weight": "3.3 кг",
+    "dimensions": "190 х 87 см",
+    "description": "FUR-1.4",
+    "image": "artworks/DSC06682_1.jpg",
+    "price": "34 200 сом",
+    "series": 12,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 68,
+  "fields": {
+    "title": "Меховой ковер «Мамалак» 5",
+    "is_published": true,
+    "year": 2026,
+    "medium": "овечьи шкурки, поролон, лён",
+    "weight": "2.8 кг",
+    "dimensions": "180 х 81 см",
+    "description": "FUR-1.5",
+    "image": "artworks/DSC06686.jpg",
+    "price": "34 200 сом",
+    "series": 12,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      8
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 69,
+  "fields": {
+    "title": "Войлочная кисть 1",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "",
+    "dimensions": "150 х 30 см",
+    "description": "DS-42.1",
+    "image": "artworks/DSC06797.jpg",
+    "price": "28 800 сом",
+    "series": 13,
+    "designed_by": [
+      11
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      7
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 70,
+  "fields": {
+    "title": "Войлочная кисть 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "",
+    "dimensions": "150 х 30 см",
+    "description": "DS-43.1",
+    "image": "artworks/DSC06807_1.jpg",
+    "price": "28 800 сом",
+    "series": 13,
+    "designed_by": [
+      11
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      7
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 71,
+  "fields": {
+    "title": "Войлочная кисть 3",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "",
+    "dimensions": "150 х 30 см",
+    "description": "DS-44.1",
+    "image": "artworks/DSC06813.jpg",
+    "price": "28 800 сом",
+    "series": 13,
+    "designed_by": [
+      11
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      7
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 72,
+  "fields": {
+    "title": "Старая крепость",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "",
+    "dimensions": "172 х 153 см",
+    "description": "AK-246.1\r\nВдохновленная планировкой первой Пишпекской крепости, эта панель представляет войлок в виде прочной архитектурной формы. Когда-то использовавшийся для укрепления глиняных стен, войлок теперь сам становится стеной - символом утраченного порядка, стойкости и времени.",
+    "image": "artworks/DSC09901_1.jpg",
+    "price": "50 211 см",
+    "series": null,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      4
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 73,
+  "fields": {
+    "title": "Ала кийиз «Кара-Суу» 1",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "",
+    "dimensions": "215 х 149 см",
+    "description": "AK-247.1",
+    "image": "artworks/photo_5384203897880124885_y.jpg",
+    "price": "61 122.6 сом",
+    "series": 14,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      4
+    ]
+  }
+},
+{
+  "model": "artists.artwork",
+  "pk": 74,
+  "fields": {
+    "title": "Ала кийиз «Кара-Суу» 2",
+    "is_published": true,
+    "year": 2026,
+    "medium": "шерсть",
+    "weight": "",
+    "dimensions": "210 х 142 см",
+    "description": "AK-248.1",
+    "image": "artworks/DSC06983_1.jpg",
+    "price": "56 898 сом",
+    "series": 14,
+    "designed_by": [
+      6
+    ],
+    "made_by": [],
+    "designed_by_workshops": [],
+    "made_by_workshops": [
+      4
     ]
   }
 },
@@ -1226,6 +2270,114 @@
   }
 },
 {
+  "model": "artists.artworkimage",
+  "pk": 36,
+  "fields": {
+    "artwork": 47,
+    "image": "artworks/gallery/DSC06748_1.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 37,
+  "fields": {
+    "artwork": 47,
+    "image": "artworks/gallery/DSC06759_1.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 38,
+  "fields": {
+    "artwork": 49,
+    "image": "artworks/gallery/DSC06773_1.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 39,
+  "fields": {
+    "artwork": 49,
+    "image": "artworks/gallery/DSC06768.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 40,
+  "fields": {
+    "artwork": 51,
+    "image": "artworks/gallery/DSC06784_1.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 41,
+  "fields": {
+    "artwork": 53,
+    "image": "artworks/gallery/DSC06390.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 42,
+  "fields": {
+    "artwork": 69,
+    "image": "artworks/gallery/DSC06822_1.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 43,
+  "fields": {
+    "artwork": 69,
+    "image": "artworks/gallery/DSC06826_2.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 44,
+  "fields": {
+    "artwork": 71,
+    "image": "artworks/gallery/DSC06816_2.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 45,
+  "fields": {
+    "artwork": 71,
+    "image": "artworks/gallery/DSC06817_1.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 46,
+  "fields": {
+    "artwork": 72,
+    "image": "artworks/gallery/DSC09907_1.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "artists.artworkimage",
+  "pk": 47,
+  "fields": {
+    "artwork": 72,
+    "image": "artworks/gallery/DSC09915.jpg",
+    "order": 0
+  }
+},
+{
   "model": "artists.series",
   "pk": 1,
   "fields": {
@@ -1270,6 +2422,177 @@
       5
     ],
     "workshops": []
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 4,
+  "fields": {
+    "title": "Серия ворсовых ковров «Босого»",
+    "description": "Ковры сотканы вручную из стопроцентной шерстяной пряжи в естественной природной палитре. В основе графического решения серии лежит ромб - один из древнейших символов кочевых культур, сакральный знак портала и перехода.\r\n\r\nВыразительность работ строится на сложном техническом контрасте: чередование безворсового и ворсового плетения не только раскрывает графический замысел, но и формирует глубокую рельефную фактуру. Эта архитектурность полотна превращает традиционный ковер в живой тактильный объект, задающий современному интерьеру осмысленный ритм.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [
+      6
+    ],
+    "workshops": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 5,
+  "fields": {
+    "title": "Серия циновки «Ший»",
+    "description": "Исторически ший - это традиционная циновка для боковых стен юрты. В отличие от кыргызских аналогов из тростника, каракалпакский вариант собирается из жеккена — очищенного остова камыша.\r\n\r\nМинималистичное плетение черными нитями задает природному полотну строгий графичный ритм. В современном интерьере этот аутентичный предмет идеально работает как легкая зонирующая перегородка, которая мягко структурирует пространство и свободно пропускает воздух.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [],
+    "workshops": [
+      6
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 6,
+  "fields": {
+    "title": "Серия \"Курак туштук\"",
+    "description": "В традиционном кочевом быту масштабные лоскутные полотна (курак туштук) выполняли как эстетическую, так и символическую функцию. Они служили главным настенным декором , а также парадным покрывалом для жуук - бережно сложенной горкой стопки одеял и утвари, олицетворяющей благополучие семьи.\r\n\r\nВ современном интерьере это полотно смело берет на себя роль главной визуальной доминанты. Выразительная геометрия и мощный цветовой контраст техники курак делают предмет абсолютно универсальным. Он идеально интегрируется в пространство и как монументальное настенное панно, задающее ритм всему помещению, и как фактурное акцентное покрывало, наполняющее дом энергией традиционного искусства.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [],
+    "workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 7,
+  "fields": {
+    "title": "Серия \"Курак төшөк\"",
+    "description": "Төшөк - базовая константа кочевого гостеприимства, традиционный матрас для комфортного сидения за низким столом. В современном доме этот формат обретает новое прочтение, идеально отвечая актуальному интерьерному тренду на расслабленную «низкую посадку» (low seating) и создание неформальных лаунж-зон.\r\n\r\nСегодня аутентичный ручной курак оказался под угрозой исчезновения, будучи практически вытесненным с рынка быстрыми промышленными имитациями. Представленное изделие - это осознанное возвращение к истокам и подлинному ремеслу.\r\n\r\nКропотливая ручная сборка контрастных лоскутов возвращает утилитарному предмету статус настоящего искусства. В интерьере такой төшөк работает как живой, тактильный акцент, бросающий вызов безликому фабричному производству и наполняющий дом честной энергией традиций.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [],
+    "workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 8,
+  "fields": {
+    "title": "Серия \"Курак жаздык\"",
+    "description": "Традиционные подушки и валики жаздык - логичное архитектурное дополнение к напольным матрасам төшөк, создающее идеальную эргономику для расслабленного отдыха на полу.\r\n\r\nВ этой серии комфорт неразрывно связан с выразительным визуальным языком лоскутного шитья. Математически выверенная, контрастная геометрия курака превращает базовые элементы удобства в активные интерьерные акценты, хранящие в себе сакральную символику оберега.\r\n\r\nВ современном пространстве такие подушки безупречно завершают формирование лаунж-зон. Это мобильные, фактурные детали, которые позволяют легко менять сценарии отдыха, добавляя интерьеру графичной динамики и теплого, тактильного уюта.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [],
+    "workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 9,
+  "fields": {
+    "title": "Серия \"Курак Ат-жабуу\"",
+    "description": "Исторически Ат-жабуу - это парадная текстильная попона, которой торжественно украшали лошадь во время проводов невесты. Этот предмет нес в себе эстетику важнейшего ритуала, символизируя статус семьи и красоту жизненного перехода.\r\n\r\nВыполненное в  лоскутной технике курак, сегодня это церемониальное полотно обретает совершенно новую жизнь. Монументальный масштаб, выверенная геометрия контрастных паттернов и мощная энергетика цвета позволяют ему выйти за рамки первоначальной утилитарной функции.\r\n\r\nВ актуальном дизайне Ат-жабуу трансформируется в самодостаточное настенное панно. Размещенное в современном пространстве, оно становится масштабным визуальным центром, задающим интерьеру атмосферу торжественности, уникальный графичный ритм и глубокий исторический нарратив.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [],
+    "workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 10,
+  "fields": {
+    "title": "Серия «Курак текче»",
+    "description": "Исторически текче служил функциональной подвесной системой для бережного хранения головных уборов и ценных элементов одежды в пространстве юрты.\r\n\r\nВ данной работе утилитарный предмет кочевого быта переосмыслен через глубокую символику традиционного лоскутного шитья. Выверенная геометрия узоров и мощный цветовой контраст превращают подвесной модуль в самодостаточный функциональный арт-объект. В современном интерьере он становится выразительным визуальным акцентом, который эстетично организует пространство и транслирует сильную энергетику культурного наследия.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [],
+    "workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 11,
+  "fields": {
+    "title": "Серия \"Антиквариат\"",
+    "description": "",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [],
+    "workshops": [
+      5
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 12,
+  "fields": {
+    "title": "Серия меховых ковров «Мамалак»",
+    "description": "Меховые коврики «Мамалак» (медвежонок) собраны из выделанных овечьих шкур в технике лоскутного шитья.\r\n\r\nКонцепция этих работ строится на выразительном контрасте. Строгая черно-белая геометрия орнамента упорядочивает первозданную, «дикую» фактуру меха, трансформируя сложный природный материал в графичный акцент. Благодаря высокому качеству обработки, коврики приобретают мягкую  тактильность, привнося в пространство не только визуальную динамику, но и ощущение безусловного уюта.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [
+      6
+    ],
+    "workshops": []
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 13,
+  "fields": {
+    "title": "Серия войлочных кисточек \"Чачык\"",
+    "description": "Данная работа - это авторское переосмысление традиционных элементов кыргызского быта. Композиция строится на выразительном сочетании фактурных войлочных колоколов, сложных узлов и ниспадающих кистей, образующем многоуровневую структуру.\r\n\r\nКак и свои исторические первоисточники, эти объекты сохраняют за собой символическую функцию оберега, защищающего пространство дома. Изделия выполнены в естественной палитре неокрашенной шерсти. Подчеркнутая природность материала и многослойность форм превращают традиционный атрибут в самостоятельный арт-объект, вносящий в интерьер воздушный, но устойчивый акцент.",
+    "cover_image": "series/848512512_2.jpg",
+    "order": 0,
+    "is_published": true,
+    "artists": [
+      11
+    ],
+    "workshops": [
+      7
+    ]
+  }
+},
+{
+  "model": "artists.series",
+  "pk": 14,
+  "fields": {
+    "title": "Серия войлочных ковров «Кара-Суу»",
+    "description": "Серия выполнена в традиционной технике ала-кийиз, основанной на вваливании цветного шерстяного волокна в основу полотна. Данный метод обеспечивает создание мягких цветовых градиентов и характерную  фактуру поверхности.\r\n\r\nВизуальная концепция коллекции строится на сочетании геометрических форм, интерпретирующих горный ландшафт, и традиционных орнаментов, символизирующих извилистость горных рек. Использование терракотовой цветовой палитры и ручная раскладка шерсти  придают изделиям тактильную выразительность, создавая атмосферу уюта, актуальную для тех, кто  ценит культурный код в современном исполнении.",
+    "cover_image": "",
+    "order": 0,
+    "is_published": true,
+    "artists": [
+      6
+    ],
+    "workshops": [
+      4
+    ]
   }
 }
 ]

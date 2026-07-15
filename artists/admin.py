@@ -21,10 +21,10 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Artwork)
 class ArtworkAdmin(admin.ModelAdmin):
-    list_display = ['title', 'get_authors', 'series', 'year', 'medium', 'is_published']
+    list_display = ['title', 'get_code', 'get_authors', 'series', 'year', 'medium', 'price', 'is_published']
     list_editable = ['is_published']
     list_filter = ['series', 'is_published', 'designed_by', 'made_by']
-    search_fields = ['title', 'designed_by__name', 'made_by__name']
+    search_fields = ['title', 'description', 'price', 'designed_by__name', 'made_by__name']
     inlines = [ArtworkImageInline]
     filter_horizontal = ['designed_by', 'made_by', 'designed_by_workshops', 'made_by_workshops']
 
@@ -34,6 +34,12 @@ class ArtworkAdmin(admin.ModelAdmin):
         all_authors = designers + [m for m in makers if m not in designers]
         return ", ".join(all_authors) or "—"
     get_authors.short_description = 'Авторы'
+
+    def get_code(self, obj):
+        if obj.description:
+            return obj.description.split('\n')[0].strip()
+        return "—"
+    get_code.short_description = 'Код'
 
 
 @admin.register(ArtworkImage)
