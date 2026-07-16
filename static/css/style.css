@@ -1182,3 +1182,137 @@ body {
     .artworks-section { padding: 0 24px 60px; }
     .shop-section { padding: 32px 24px 60px; }
 }
+
+/* ============ HOME HERO ============ */
+
+main:has(.exh-hero) {
+    padding: 0;
+    margin: 0;
+}
+
+.exh-hero {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.exh-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.exh-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: hero-image-in 1.4s ease-out both;
+    transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);
+    will-change: transform;
+}
+
+
+.exh-hero-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--grey-3);
+    z-index: 1;
+}
+
+.exh-hero-overlay {
+    position: absolute;
+    left: 48px;
+    bottom: 60px;
+    max-width: 560px;
+    z-index: 5;
+    color: var(--grey-1);
+    animation: hero-text-in 1.6s ease-out 0.3s both;
+    transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);
+    will-change: transform;
+}
+
+.exh-hero-overlay,
+.exh-hero-overlay * {
+    color: var(--grey-1);
+    text-shadow: none;
+}
+
+.exh-hero-status {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.exh-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(38px, 5.5vw, 72px);
+    line-height: 1.05;
+    font-weight: 400;
+    margin: 0 0 22px 0;
+    letter-spacing: -0.01em;
+}
+
+.exh-hero-meta {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.exh-hero-meta span {
+    display: block;
+}
+
+.exh-hero-link {
+    display: inline-block;
+    margin-top: 28px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--grey-1);
+    padding-bottom: 4px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.exh-hero-link:hover {
+    color: var(--black);
+    border-color: var(--black);
+}
+
+
+@keyframes hero-image-in {
+    from { transform: scale(1.12); opacity: 0; }
+    to   { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes hero-text-in {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+@media (max-width: 640px) {
+    .exh-hero-overlay {
+        left: 24px;
+        right: 24px;
+        bottom: 40px;
+        max-width: none;
+    }
+}

@@ -21,10 +21,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
             <div class="navbar-nav ms-auto gap-4">
-                <a href="/artists/" class="nav-link-item">Мастера</a>
-                <a href="/exhibitions/" class="nav-link-item">Выставки</a>
-                <a href="/shop/" class="nav-link-item">Магазин</a>
                 <a href="/about/" class="nav-link-item">О галерее</a>
+                <a href="/shop/" class="nav-link-item">Магазин</a>
+                <a href="/exhibitions/" class="nav-link-item">Выставки</a>
+                <a href="/artists/" class="nav-link-item">Мастера</a>
                 <a href="/contacts/" class="nav-link-item">Контакты</a>
             </div>
         </div>
@@ -43,11 +43,11 @@
                 <span class="footer-logo">АК</span>
             </div>
             <div class="col-md-4 mb-3 d-flex flex-column gap-2">
-                <a href="/artists/" class="footer-link">Мастера</a>
-                <a href="/exhibitions/" class="footer-link">Выставки</a>
-                <a href="/shop/" class="footer-link">Магазин</a>
-                <a href="/about/" class="footer-link">О галерее</a>
-                <a href="/contacts/" class="footer-link">Контакты</a>
+                <a href="/about/" class="nav-link-item">О галерее</a>
+                <a href="/shop/" class="nav-link-item">Магазин</a>
+                <a href="/exhibitions/" class="nav-link-item">Выставки</a>
+                <a href="/artists/" class="nav-link-item">Мастера</a>
+                <a href="/contacts/" class="nav-link-item">Контакты</a>
             </div>
             <div class="col-md-4 mb-3 d-flex flex-column gap-2">
                 <p class="footer-text">Бишкек, Кыргызстан</p>
@@ -84,5 +84,30 @@ document.querySelectorAll('.artwork-slider').forEach(slider => {
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hero = document.querySelector('.exh-hero');
+    if (!hero) return;
+
+    const image = hero.querySelector('.exh-hero-image img');
+    const overlay = hero.querySelector('.exh-hero-overlay');
+    if (!image) return;
+
+    const imageStrength = 65;
+    const overlayStrength = 25;
+
+    document.addEventListener('mousemove', function(e) {
+        const x = (e.clientX / window.innerWidth) - 0.5;
+        const y = (e.clientY / window.innerHeight) - 0.5;
+
+        image.style.transform = 'scale(1.08) translate(' + (x * imageStrength) + 'px, ' + (y * imageStrength) + 'px)';
+        if (overlay) {
+            overlay.style.transform = 'translate(' + (-x * overlayStrength) + 'px, ' + (-y * overlayStrength) + 'px)';
+        }
+    });
+});
+</script>
+
 </body>
 </html>

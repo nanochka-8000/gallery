@@ -1,6 +1,5 @@
 from django.db import models
-from artists.models import Artist, Artwork
-
+from artists.models import Artist, Artwork, Workshop
 
 class Exhibition(models.Model):
     STATUS_CHOICES = [
@@ -13,6 +12,7 @@ class Exhibition(models.Model):
     description = models.TextField(blank=True)
     cover_image = models.ImageField(upload_to='exhibitions/', blank=True)
     artists = models.ManyToManyField(Artist, blank=True)
+    workshops = models.ManyToManyField(Workshop, blank=True)
     artworks = models.ManyToManyField(Artwork, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
