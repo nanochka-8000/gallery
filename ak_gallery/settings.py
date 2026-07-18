@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'inquiries',
     'shop',
     'contacts',
+    'imagekit',
 ]
 
 MIDDLEWARE = [

@@ -27,15 +27,43 @@
         <a href="/exhibitions/{{ featured_exhibition.id }}/" class="exh-hero-link">Подробнее</a>
     </div>
 </section>
-{% else %}
-<section class="exh-hero">
-    <div class="exh-hero-placeholder"></div>
-    <div class="exh-hero-overlay exh-hero-overlay--dark">
-        <h1 class="exh-hero-title">АК Галерея</h1>
-        <p class="exh-hero-meta"><span>Бишкек, Кыргызстан</span></p>
-    </div>
-</section>
-
 {% endif %}
+
+<div class="curtain-content">
+    {% if featured_exhibition.images.all %}
+    <section class="hero-gallery">
+        <div class="hero-gallery-header">
+            <span class="section-label">С зала выставки</span>
+        </div>
+
+        <div class="hero-carousel" id="heroCarousel">
+            <button class="hero-carousel-btn hero-carousel-prev" aria-label="Назад">
+                <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2L2 14L14 26" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+            </button>
+
+            <div class="hero-carousel-track" id="heroCarouselTrack">
+                {% for img in featured_exhibition.images.all %}
+                <div class="hero-carousel-slide">
+                    <img src="{{ img.image_thumb.url }}" alt="{{ img.caption|default:featured_exhibition.title }}" loading="lazy">
+                    {% if img.caption %}
+                        <p class="hero-carousel-caption">{{ img.caption }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <button class="hero-carousel-btn hero-carousel-next" aria-label="Вперёд">
+                <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2L14 14L2 26" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="hero-carousel-dots" id="heroCarouselDots"></div>
+    </section>
+    {% endif %}
+</div>
 
 {% endblock %}
