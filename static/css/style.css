@@ -349,33 +349,7 @@ body {
 .exh-info { padding: 48px 48px 0; }
 .exh-artists, .exh-artworks { padding: 0 48px 64px; }
 
-/* ABOUT */
-.about-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
-}
-.about-text { padding: 80px 48px; }
-.about-heading {
-    font-family: var(--font-serif);
-    font-size: 56px;
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--black);
-    margin-bottom: 32px;
-}
-.about-body p { margin-bottom: 16px; font-size: 15px; line-height: 1.8; color: var(--dark); }
-.about-details { margin-top: 40px; }
-.about-detail-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 0.5px solid var(--grey-2);
-    font-size: 13px;
-}
-.about-detail-row dt { color: var(--grey-1); font-weight: 400; }
-.about-detail-row dd { color: var(--black); margin: 0; }
-.about-image { background: var(--grey-3); }
+
 
 /* INQUIRY */
 .inquiry-section { padding: 64px 48px; }
@@ -1170,10 +1144,6 @@ body {
     .artwork-detail { padding: 40px 24px; }
     .artists-section {padding: 0 24px 60px; }
     .artwork-hero { grid-template-columns: 1fr; gap: 32px; }
-    .about-section { grid-template-columns: 1fr; }
-    .about-text { padding: 48px 24px; }
-    .about-image { display: none; }
-    .about-heading { font-size: 40px; }
     .inquiry-section { padding: 40px 24px; }
     .inquiry-layout { grid-template-columns: 1fr; gap: 32px; }
     .exhibitions-section { padding: 0 24px 60px; }
@@ -1552,3 +1522,50 @@ footer.footer {
         align-items: flex-start;
     }
 }
+
+/* ============ ABOUT — HERO ============ */
+
+.about-hero {
+    padding: 120px 48px 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-hero-title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: var(--black);
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.about-hero-ak {
+    font-size: clamp(80px, 12vw, 160px);
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+}
+
+.about-hero-tagline {
+    font-size: clamp(24px, 3vw, 44px);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--dark);
+    font-weight: 300;
+}
+
+.about-hero-tagline em {
+    font-style: italic;
+    color: var(--grey-1);
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 80px 24px 60px;
+    }
+}
+
