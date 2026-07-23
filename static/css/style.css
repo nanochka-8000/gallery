@@ -6,8 +6,8 @@
     --grey-3: #F5F4F0;
     --gold: #C8A97E;
     --white: #FFFFFF;
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
-    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Roboto', sans-serif;
+    --font-sans: 'Roboto', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1526,17 +1526,22 @@ footer.footer {
 /* ============ ABOUT — HERO ============ */
 
 .about-hero {
-    padding: 120px 48px 100px;
-    max-width: 1400px;
-    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+    width: 100%;
+    max-width: none;
+    margin: 0;
     text-align: center;
+    padding: 120px 48px 140px;
 }
 
 .about-hero-title {
+    max-width: 1400px;
+    margin: 0 auto;
     font-family: var(--font-serif);
     font-weight: 300;
     color: var(--black);
-    margin: 0;
     line-height: 1;
     display: flex;
     flex-direction: column;
@@ -1569,3 +1574,101 @@ footer.footer {
     }
 }
 
+/* ============ ABOUT — FEATURE + CONTENT (Zach Richard style) ============ */
+
+.about-feature {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    will-change: filter, transform;
+}
+
+.about-content {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    width: 100%;
+    /* 1. Убираем наезд и создаем паузу: текст появится только через 40% экрана */
+    margin-top: 0;
+    padding-top: 40vh;
+    padding-bottom: 200px;
+}
+
+.priorities-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px;
+}
+
+.priorities-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--black);
+    margin: 0 0 80px 0;
+    letter-spacing: -0.01em;
+}
+
+.priorities-heading em {
+    font-style: italic;
+    color: var(--grey-1);
+}
+
+.priorities-text p {
+    font-family: var(--font-sans);
+    font-size: clamp(18px, 1.6vw, 24px);
+    line-height: 1.7;
+    color: var(--dark);
+    margin: 0 0 40px 0;
+}
+
+/* Highlight */
+.hl {
+    /* Эта строчка отключает дефолтный желтый цвет браузера */
+    background-color: transparent;
+
+    background-image: linear-gradient(to right, var(--dark) 0%, var(--dark) 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+
+    color: var(--dark);
+    font-weight: 500;
+
+    border-radius: 0;
+    padding: 2px 4px;
+
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    transition: background-size 0.8s cubic-bezier(0.25, 1, 0.3, 1), color 0.8s ease;
+}
+
+.hl.is-active {
+    background-size: 100% 100%;
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .about-feature {
+        background-size: 200%;
+    }
+    .about-content {
+        padding-top: 60%;
+    }
+    .priorities-inner {
+        padding: 80px 24px 0;
+    }
+}
+
+footer.footer {
+    position: relative;
+    z-index: 3;
+    background: var(--white);
+}
