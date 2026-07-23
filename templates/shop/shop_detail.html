@@ -1,43 +1,64 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ product.title }} — АК Магазин{% endblock %}
+{% block title %}{{ artwork.title }} — АК Галерея{% endblock %}
 
 {% block content %}
-<section class="artwork-detail">
-    <div class="artwork-hero">
-        <div class="artwork-image-wrap">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.title }}" class="artwork-image">
+<div class="shop-detail-page">
+    <div class="shop-detail-grid">
+
+        <!-- Левая колонка: Изображение -->
+        <div class="shop-detail-image">
+            {% if artwork.image %}
+                <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
             {% else %}
-                <div class="shop-no-image shop-no-image--large"></div>
+                <div class="shop-no-image-large"></div>
             {% endif %}
+            <!-- Здесь можно будет добавить слайдер, если у работы несколько фото -->
         </div>
 
-        <div class="artwork-info">
-            <a href="/shop/" class="back-link">&larr; Магазин</a>
+        <!-- Правая колонка: Информация -->
+        <div class="shop-detail-info">
+            <a href="{% url 'shop_list' %}" class="shop-back-link">&larr; МАГАЗИН</a>
 
-            <span class="page-tag">{{ product.get_category_display }}</span>
-            <h1 class="artist-name">{{ product.title }}</h1>
+            <div class="shop-detail-category">Работа</div>
+            <h1 class="shop-detail-title">{{ artwork.title }}</h1>
 
-            <div class="artwork-meta-block">
-                {% if product.artist_name %}
-                    <p class="artwork-meta">{{ product.artist_name }}</p>
-                {% endif %}
-                <p class="artwork-price">{{ product.price }} {{ product.currency }}</p>
+            <div class="shop-detail-specs">
+                {% if artwork.year %}<p>{{ artwork.year }}</p>{% endif %}
+                {% if artwork.medium %}<p>{{ artwork.medium }}</p>{% endif %}
+                {% if artwork.weight %}<p>{{ artwork.weight }}</p>{% endif %}
+                {% if artwork.dimensions %}<p>{{ artwork.dimensions }}</p>{% endif %}
             </div>
 
-            {% if product.description %}
-                <p class="artwork-description">{{ product.description }}</p>
+            <div class="shop-detail-author">
+                Исполнение: <span>{{ artwork.authors }}</span>
+            </div>
+
+            {% if artwork.price %}
+            <div class="shop-detail-price">
+                {{ artwork.price }}
+            </div>
             {% endif %}
 
-            <div class="qr-info">
-                <a href="mailto:info@akgallery.kg?subject=Покупка: {{ product.title }}" class="inquiry-btn">
-                    Купить / Узнать подробнее &rarr;
-                </a>
-                <span class="qr-note">Ответим в течение 24 часов</span>
+            <div class="shop-detail-desc">
+                {{ artwork.description|linebreaks }}
+            </div>
+
+            <!-- Кнопка с JS-классом для добавления в Лист Запросов -->
+            <button class="btn-solid js-add-to-enquiry"
+                    data-id="{{ artwork.id }}"
+                    data-title="{{ artwork.title }}"
+                    data-artist="{{ artwork.authors }}"
+                    data-image="{% if artwork.image %}{{ artwork.image.url }}{% endif %}"
+                    style="width: auto; padding: 16px 32px;">
+                Оставить запрос &rarr;
+            </button>
+
+            <div class="shop-detail-note">
+                Ответим в течение 24 часов
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

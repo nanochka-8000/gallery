@@ -24,6 +24,7 @@
             <div class="navbar-nav ms-auto gap-4">
                 <a href="/about/" class="nav-link-item">О галерее</a>
                 <a href="/shop/" class="nav-link-item">Магазин</a>
+                <a href="#" class="nav-link-item js-toggle-enquiry">Запросы (<span id="enquiry-count">0</span>)</a>
                 <a href="/exhibitions/" class="nav-link-item">Выставки</a>
                 <a href="/artists/" class="nav-link-item">Мастера</a>
                 <a href="/contacts/" class="nav-link-item">Контакты</a>
@@ -36,6 +37,53 @@
     {% block content %}
     {% endblock %}
 </main>
+
+<div class="enquiry-sidebar" id="enquirySidebar">
+    <div class="enquiry-sidebar-header">
+        <h3 class="enquiry-title">Лист запросов</h3>
+        <button class="enquiry-close js-toggle-enquiry">Закрыть</button>
+    </div>
+
+    <div class="enquiry-layout">
+        <!-- Левая колонка: Выбранные работы -->
+        <div class="enquiry-items-col">
+            <div class="enquiry-items-header">
+                <span id="enquiry-items-count">0 работ</span>
+                <button class="enquiry-clear js-clear-enquiry">Очистить все</button>
+            </div>
+            <div class="enquiry-items-list" id="enquiryList">
+                <!-- Сюда через JS будут добавляться работы -->
+                <p class="empty-state">Ваш лист запросов пуст.</p>
+            </div>
+        </div>
+
+        <!-- Правая колонка: Форма -->
+        <div class="enquiry-form-col">
+            <form action="/inquiry/" method="POST" id="enquiryForm">
+                {% csrf_token %}
+                <input type="hidden" name="artworks_list" id="artworksListInput" value="">
+                <div class="form-group">
+                    <input type="text" class="form-input" name="first_name" placeholder="Имя*" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="last_name" placeholder="Фамилия*" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" name="email" placeholder="Email*" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-input" name="phone" placeholder="Телефон (необязательно)">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input form-textarea" name="message" placeholder="Сообщение" required>Здравствуйте, меня интересуют выбранные работы. Пожалуйста, свяжитесь со мной для обсуждения деталей.</textarea>
+                </div>
+                <button type="submit" class="btn-solid" style="width: 100%; margin-top: 24px;">Отправить запрос</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Слой затемнения фона -->
+<div class="enquiry-overlay js-toggle-enquiry" id="enquiryOverlay"></div>
 
 <footer class="footer">
     <div class="footer-inner">
@@ -51,7 +99,7 @@
         </div>
 
         <div class="footer-col footer-col--right">
-            <a href="mailto:info@akgallery.kg" class="footer-link">info@akgallery.kg</a>
+            <a href="mailto:info@akgallery.kg" class="footer-link">akgallery.kg@gmail.com</a>
             <div class="footer-social">
                 <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -252,6 +300,87 @@ document.querySelectorAll('.artwork-slider').forEach(slider => {
 
     marks.forEach(mark => observer.observe(mark));
 })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('enquirySidebar');
+    const overlay = document.getElementById('enquiryOverlay');
+    const toggleBtns = document.querySelectorAll('.js-toggle-enquiry');
+    const addBtns = document.querySelectorAll('.js-add-to-enquiry');
+    const enquiryList = document.getElementById('enquiryList');
+    const countDisplay = document.getElementById('enquiry-count');
+    const itemsCountDisplay = document.getElementById('enquiry-items-count');
+    const clearBtn = document.querySelector('.js-clear-enquiry');
+
+    // Массив для хранения выбранных ID
+    let selectedArtworks = [];
+
+    // Открытие/закрытие боковой панели
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('is-open');
+            overlay.classList.toggle('is-open');
+        });
+    });
+
+    // Добавление товара в лист
+    addBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-id');
+            const title = this.getAttribute('data-title');
+            const artist = this.getAttribute('data-artist');
+            const image = this.getAttribute('data-image');
+
+            // Проверяем, нет ли уже этой работы в листе
+            if (!selectedArtworks.find(item => item.id === id)) {
+                selectedArtworks.push({id, title, artist, image});
+                updateEnquiryUI();
+            }
+
+            // Открываем панель после добавления
+            sidebar.classList.add('is-open');
+            overlay.classList.add('is-open');
+        });
+    });
+
+    // Очистка листа
+    clearBtn.addEventListener('click', () => {
+        selectedArtworks = [];
+        updateEnquiryUI();
+    });
+
+    // Функция обновления визуальной части
+    function updateEnquiryUI() {
+        countDisplay.textContent = selectedArtworks.length;
+        itemsCountDisplay.textContent = selectedArtworks.length + ' работ';
+        const artworksInput = document.getElementById('artworksListInput');
+        if (artworksInput) {
+            // Собираем названия всех работ через запятую
+            artworksInput.value = selectedArtworks.map(item => item.title).join(', ');
+        }
+
+        if (selectedArtworks.length === 0) {
+            enquiryList.innerHTML = '<p class="empty-state">Ваш лист запросов пуст.</p>';
+        } else {
+            enquiryList.innerHTML = '';
+            selectedArtworks.forEach(item => {
+                const imgHtml = item.image ? `<img src="${item.image}" alt="">` : `<div style="width:80px;height:80px;background:#eee;"></div>`;
+                enquiryList.innerHTML += `
+                    <div class="enquiry-cart-item">
+                        ${imgHtml}
+                        <div class="enquiry-cart-info">
+                            <h4>${item.artist}</h4>
+                            <p><em>${item.title}</em></p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    }
+});
 </script>
 
 </body>
