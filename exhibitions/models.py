@@ -15,7 +15,6 @@ class Exhibition(models.Model):
     cover_image = models.ImageField(upload_to='exhibitions/', blank=True)
     artists = models.ManyToManyField(Artist, blank=True)
     workshops = models.ManyToManyField(Workshop, blank=True)
-    artworks = models.ManyToManyField(Artwork, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='upcoming')

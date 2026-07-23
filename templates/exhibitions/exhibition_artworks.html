@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Работы: {{ exhibition.title }} — АК Галерея{% endblock %}
+
+{% block content %}
+<div class="exh-artworks-page curtain-reveal">
+    <div class="page-header" style="text-align: center; border-bottom: none; padding-bottom: 24px;">
+        <a href="{% url 'exhibition_detail' exhibition.id %}" class="shop-back-link" style="margin-bottom: 24px;">&larr; Назад к выставке</a>
+        <h1 class="page-title">{{ exhibition.title }}</h1>
+        <p class="section-label" style="margin-top: 16px;">Все работы с выставки</p>
+    </div>
+
+    <div class="exh-artworks-list">
+        {% for artwork in exhibition.exhibition_artworks.all %}
+        <div class="exh-artwork-row" id="artwork-{{ artwork.id }}">
+
+            <!-- Картинка теперь кликабельна и ведет на детальную страницу работы -->
+            <div class="exh-artwork-image">
+                <a href="{% url 'shop_detail' artwork.id %}">
+                    {% if artwork.image %}
+                        <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+                    {% else %}
+                        <div class="shop-no-image-large"></div>
+                    {% endif %}
+                </a>
+            </div>
+
+            <!-- Информация: только название, параметры, год и автор (без описания и цены) -->
+            <div class="exh-artwork-info">
+                <h2 class="exh-artwork-artist">{{ artwork.authors }}</h2>
+                <h3 class="exh-artwork-title">
+                    <a href="{% url 'shop_detail' artwork.id %}" style="text-decoration: none; color: inherit;">
+                        <em>{{ artwork.title }}</em>{% if artwork.year %}, {{ artwork.year }}{% endif %}
+                    </a>
+                </h3>
+
+                {% if artwork.medium %}<p class="exh-artwork-specs">{{ artwork.medium }}</p>{% endif %}
+                {% if artwork.dimensions %}<p class="exh-artwork-specs">{{ artwork.dimensions }}</p>{% endif %}
+
+                <!-- Кнопка запроса -->
+                <button class="btn-solid btn-enquire-hover js-add-to-enquiry"
+                        data-id="{{ artwork.id }}"
+                        data-title="{{ artwork.title }}"
+                        data-artist="{{ artwork.authors }}"
+                        data-image="{% if artwork.image %}{{ artwork.image.url }}{% endif %}"
+                        style="position:relative; opacity:1; visibility:visible; transform:none; max-width: 200px; margin-top: 24px;">
+                    Оставить запрос
+                </button>
+            </div>
+
+        </div>
+        {% empty %}
+        <p class="empty-state" style="text-align: center;">К этой выставке пока не привязаны работы.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const rows = document.querySelectorAll('.exh-artwork-row');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Прекращаем наблюдение после того, как анимация срабатыла
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15 // Срабатывает, когда элемент появляется на 15% в области видимости
+    });
+
+    rows.forEach(row => {
+        observer.observe(row);
+    });
+});
+</script>
+
+{% endblock %}

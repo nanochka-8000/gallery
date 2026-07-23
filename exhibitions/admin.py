@@ -13,5 +13,5 @@ class ExhibitionAdmin(admin.ModelAdmin):
     list_display = ['title', 'status', 'start_date', 'end_date']
     list_filter = ['status']
     search_fields = ['title']
-    filter_horizontal = ['artists', 'workshops', 'artworks']
+    filter_horizontal = ('artists', 'workshops')
     inlines = [ExhibitionImageInline]

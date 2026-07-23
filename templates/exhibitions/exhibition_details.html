@@ -4,69 +4,125 @@
 {% block title %}{{ exhibition.title }} — АК Галерея{% endblock %}
 
 {% block content %}
-<section class="exhibition-detail">
+<div class="exh-detail-page">
 
-    {% if exhibition.cover_image %}
-    <div class="exh-cover">
-        <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }}">
-    </div>
-    {% endif %}
+    <!-- Ссылка теперь абсолютная и привязана к странице -->
 
-    <div class="exh-info">
-        <span class="page-tag">{{ exhibition.get_status_display }} · {{ exhibition.start_date|date:"d M Y" }} — {{ exhibition.end_date|date:"d M Y" }}</span>
-        <h1 class="artist-name">{{ exhibition.title }}</h1>
-        {% if exhibition.location %}
-            <p class="artist-city">{{ exhibition.location }}</p>
-        {% endif %}
-        {% if exhibition.description %}
-            <div class="artist-bio" style="margin-top:24px;">
+    <div class="exh-detail-top">
+
+        <!-- Левая колонка (теперь здесь только текст и заголовок) -->
+        <div class="exh-detail-text">
+            <a href="{% url 'exhibition_list' %}" class="shop-back-link">&larr; ВЫСТАВКИ</a>
+            <h1 class="exh-detail-title">{{ exhibition.title }}</h1>
+            <p class="exh-detail-dates">{{ exhibition.start_date|date:"d M Y" }} — {{ exhibition.end_date|date:"d M Y" }}</p>
+            {% if exhibition.location %}
+                <p class="exh-detail-location">{{ exhibition.location }}</p>
+            {% endif %}
+
+            <div class="exh-detail-desc">
                 {{ exhibition.description|linebreaks }}
             </div>
-        {% endif %}
+        </div>
+
+        <!-- Правая колонка: Карусель с фото -->
+        <div class="exh-detail-carousel">
+            {% if images %}
+                <div class="exh-slider" id="exhSlider">
+                    <div class="exh-slider-track" id="exhSliderTrack">
+                        {% for img in images %}
+                        <div class="exh-slide">
+                            <img src="{{ img.image.url }}" alt="{{ img.caption }}">
+                            {% if img.caption %}<p class="exh-caption">{{ img.caption }}</p>{% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if images|length > 1 %}
+                    <div class="exh-slider-controls">
+                        <button class="exh-btn exh-prev" id="exhPrev">&larr;</button>
+                        <div class="exh-dots" id="exhDots"></div>
+                        <button class="exh-btn exh-next" id="exhNext">&rarr;</button>
+                    </div>
+                    {% endif %}
+                </div>
+            {% elif exhibition.cover_image %}
+                <!-- Заглушка, если дополнительных фото нет, но есть обложка -->
+                <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }}" style="width:100%; object-fit: contain;">
+            {% endif %}
+        </div>
     </div>
 
-    {% if exhibition.artists.all %}
-    <div class="exh-artists">
-        <h2 class="section-title">Художники</h2>
-        <div class="artists-grid">
-            {% for artist in exhibition.artists.all %}
-            <a href="/artists/{{ artist.id }}/" class="artist-card">
-                {% if artist.photo %}
-                    <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
-                {% else %}
-                    <div style="aspect-ratio:3/4;background:var(--grey-3);"></div>
-                {% endif %}
-                <div class="card-body">
-                    <span class="card-tag">{{ artist.medium }}</span>
-                    <h2 class="card-name">{{ artist.name }}</h2>
-                    <p class="card-city">{{ artist.city }}</p>
-                </div>
-            </a>
+    <!-- Блок с работами выставки -->
+    {% if exhibition.exhibition_artworks.all %}
+    <div class="exh-detail-artworks">
+        <div class="section-header">
+            <h2 class="section-label">Работы на выставке</h2>
+            <a href="{% url 'exhibition_artworks' exhibition.id %}" class="btn-outline">Посмотреть все работы</a>
+        </div>
+
+        <div class="petzel-grid" style="padding: 40px 0;">
+            <!-- Ограничиваем срез до 6 работ -->
+            {% for artwork in exhibition.exhibition_artworks.all|slice:":6" %}
+            <div class="petzel-card">
+                <a href="{% url 'exhibition_artworks' exhibition.id %}#artwork-{{ artwork.id }}" class="petzel-card-link">
+                    <div class="petzel-image-wrapper">
+                        {% if artwork.image %}
+                            <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
+                        {% else %}
+                            <div class="shop-no-image"></div>
+                        {% endif %}
+                    </div>
+                    <div class="petzel-info">
+                        <p class="petzel-title" style="font-size: 15px;"><em>{{ artwork.title }}</em></p>
+                        {% if artwork.year %}<p class="petzel-details">{{ artwork.year }}</p>{% endif %}
+                    </div>
+                </a>
+            </div>
             {% endfor %}
         </div>
     </div>
     {% endif %}
+</div>
 
-    {% if exhibition.artworks.all %}
-    <div class="exh-artworks">
-        <h2 class="section-title">Работы</h2>
-        <div class="artworks-grid">
-            {% for artwork in exhibition.artworks.all %}
-            <a href="/artists/artwork/{{ artwork.id }}/" class="artwork-card">
-                {% if artwork.image %}
-                    <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">
-                {% else %}
-                    <div style="aspect-ratio:1/1;background:var(--grey-3);"></div>
-                {% endif %}
-                <div class="card-body">
-                    <h3 class="artwork-title">{{ artwork.title }}</h3>
-                    <p class="artwork-meta">{{ artwork.medium }}{% if artwork.year %} · {{ artwork.year }}{% endif %}</p>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
+<!-- Простой скрипт для перелистывания карусели -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('exhSliderTrack');
+    if (!track) return;
+    const slides = track.querySelectorAll('.exh-slide');
+    const prevBtn = document.getElementById('exhPrev');
+    const nextBtn = document.getElementById('exhNext');
+    const dotsContainer = document.getElementById('exhDots');
+    if (slides.length <= 1) return;
 
-</section>
+    let currentIndex = 0;
+
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.classList.add('exh-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll('.exh-dot');
+
+    function goToSlide(index) {
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach(d => d.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+    }
+
+    prevBtn.addEventListener('click', () => {
+        let index = currentIndex - 1;
+        if (index < 0) index = slides.length - 1;
+        goToSlide(index);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        let index = currentIndex + 1;
+        if (index >= slides.length) index = 0;
+        goToSlide(index);
+    });
+});
+</script>
 {% endblock %}

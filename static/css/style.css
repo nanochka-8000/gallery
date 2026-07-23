@@ -1946,7 +1946,7 @@ footer.footer {
     color: var(--grey-1);
     text-decoration: none;
     display: inline-block;
-    margin-bottom: 32px;
+    margin-bottom: 16px; /* Небольшой отступ до заголовка Кең */
     transition: color 0.2s;
 }
 
@@ -2018,3 +2018,214 @@ footer.footer {
         padding: 32px 24px 80px;
     }
 }
+
+/* ============ EXHIBITION DETAIL ============ */
+.exh-detail-page {
+    padding: 64px 48px 120px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative; /* Делаем контейнер точкой отсчета для абсолютной ссылки */
+}
+
+.exh-detail-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 120px;
+    padding-top: 32px; /* Добавляем небольшой отступ сверху, чтобы контент не наезжал на ссылку */
+}
+
+.exh-detail-text {
+    position: relative;
+    margin-top: -8px; /* Сдвигаем весь левый блок ровно к верхней линии фото */
+}
+
+.exh-detail-title {
+    font-family: var(--font-sans);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.exh-detail-dates, .exh-detail-location {
+    font-size: 14px;
+    color: var(--grey-1);
+    margin-bottom: 8px;
+}
+
+.exh-detail-desc {
+    margin-top: 32px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--dark);
+}
+
+/* Слайдер (Карусель) */
+.exh-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.exh-slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.exh-slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.exh-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+    background: transparent;
+}
+
+.exh-caption {
+    font-size: 12px;
+    color: var(--grey-1);
+    margin-top: 12px;
+    text-align: right;
+}
+
+.exh-slider-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.exh-btn {
+    background: none; border: none;
+    font-size: 24px; cursor: pointer; color: var(--grey-1);
+    padding: 8px; transition: color 0.2s;
+}
+
+.exh-btn:hover { color: var(--black); }
+
+.exh-dots {
+    display: flex; gap: 8px;
+}
+
+.exh-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--grey-2); cursor: pointer; border: none; padding: 0;
+}
+
+.exh-dot.active { background: var(--black); }
+
+/* ============ EXHIBITION ARTWORKS LIST ============ */
+.exh-artworks-page {
+    padding: 0 48px 120px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.exh-artwork-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 80px 0;
+    border-bottom: 1px solid var(--grey-2);
+}
+
+.exh-artwork-row:last-child {
+    border-bottom: none;
+}
+
+.exh-artwork-image img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+.exh-artwork-artist {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--black);
+}
+
+.exh-artwork-title {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.exh-artwork-specs {
+    font-size: 13px;
+    color: var(--grey-1);
+    margin-bottom: 4px;
+}
+
+.exh-artwork-desc {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .exh-detail-top, .exh-artwork-row { grid-template-columns: 1fr; gap: 40px; }
+    .exh-detail-text { position: relative; top: 0; }
+    .exh-detail-page, .exh-artworks-page { padding: 32px 24px 80px; }
+    .exh-artwork-row { padding: 40px 0; }
+}
+
+/* Плавное появление страницы сверху */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.curtain-reveal {
+    animation: fadeInSlide 0.6s ease-out forwards;
+}
+
+/* Плавная и упругая анимация появления при скролле (в стиле Goodman) */
+.exh-artwork-row {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.exh-artwork-row.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Базовое состояние скрытого сайдбара (прячется справа за экраном) */
+.enquiry-sidebar {
+    position: fixed;
+    top: 0;
+    right: -500px; /* Спрятан за правым краем */
+    width: 500px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.05);
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+}
+
+/* Состояние, когда сайдбар открыт */
+.enquiry-sidebar.open {
+    right: 0; /* Выезжает на экран */
+}
+

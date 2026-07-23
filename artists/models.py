@@ -43,6 +43,13 @@ class WorkshopMember(models.Model):
 class Artwork(models.Model):
     title = models.CharField(max_length=200)
     is_published = models.BooleanField(default=True, verbose_name='Показывать на сайте')
+    exhibition = models.ForeignKey(
+        'exhibitions.Exhibition',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='exhibition_artworks',
+        verbose_name='Выставка')
     year = models.IntegerField(blank=True, null=True)
     medium = models.CharField(max_length=200, blank=True)
     weight = models.CharField(max_length=100, blank=True)

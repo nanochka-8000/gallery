@@ -27,7 +27,7 @@
                 <a href="#" class="nav-link-item js-toggle-enquiry">Запросы (<span id="enquiry-count">0</span>)</a>
                 <a href="/exhibitions/" class="nav-link-item">Выставки</a>
                 <a href="/artists/" class="nav-link-item">Мастера</a>
-                <a href="/contacts/" class="nav-link-item">Контакты</a>
+                <a href="javascript:void(0);" class="nav-link-item js-open-contacts">Контакты</a>
             </div>
         </div>
     </div>
@@ -82,6 +82,37 @@
         </div>
     </div>
 </div>
+
+<!-- Сайдбар контактов -->
+<div class="enquiry-sidebar" id="contactsSidebar" style="width: 500px; max-width: 100%;">
+    <div style="padding: 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--grey-2);">
+        <h2 style="font-size: 20px; font-weight: 400; margin: 0;">Контакты</h2>
+        <button class="js-close-contacts" style="background: none; border: none; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.1em;">Закрыть</button>
+    </div>
+
+    <div style="padding: 40px; overflow-y: auto; height: calc(100% - 90px);">
+        <div style="margin-bottom: 32px;">
+            <p class="section-label" style="margin-bottom: 8px;">Адрес</p>
+            <p style="font-size: 15px; color: var(--black);">ул. Токтогула, 140, Бишкек, Кыргызстан</p>
+        </div>
+
+        <div style="margin-bottom: 32px;">
+            <p class="section-label" style="margin-bottom: 8px;">Email</p>
+            <p style="font-size: 15px;"><a href="mailto:akgallery.kg@gmail.com" style="color: var(--black); text-decoration: none;">akgallery.kg@gmail.com</a></p>
+        </div>
+
+        <div style="margin-bottom: 32px;">
+            <p class="section-label" style="margin-bottom: 8px;">Телефон</p>
+            <p style="font-size: 15px;"><a href="tel:+996503881881" style="color: var(--black); text-decoration: none;">+996 555 000 000</a></p>
+        </div>
+
+        <div style="margin-bottom: 32px;">
+            <p class="section-label" style="margin-bottom: 8px;">Instagram</p>
+            <p style="font-size: 15px;"><a href="https://www.instagram.com/akgallery.kg?igsh=MWJjcmh1Z296MHh2bQ==" target="_blank" style="color: var(--black); text-decoration: none;">@akgallery</a></p>
+        </div>
+    </div>
+</div>
+
 <!-- Слой затемнения фона -->
 <div class="enquiry-overlay js-toggle-enquiry" id="enquiryOverlay"></div>
 
@@ -379,6 +410,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
             });
         }
+    }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactsSidebar = document.getElementById('contactsSidebar');
+    const overlay = document.getElementById('enquiryOverlay'); // Используем уже существующий оверлей затемнения
+    const openBtn = document.querySelector('.js-open-contacts');
+    const closeBtn = document.querySelector('.js-close-contacts');
+
+    if (openBtn && contactsSidebar) {
+        openBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactsSidebar.classList.add('open');
+            if (overlay) overlay.classList.add('active');
+        });
+    }
+
+    if (closeBtn && contactsSidebar) {
+        closeBtn.addEventListener('click', function() {
+            contactsSidebar.classList.remove('open');
+            if (overlay) overlay.classList.remove('active');
+        });
+    }
+
+    // Закрытие при клике на затемненный фон (если оверлей общий)
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            contactsSidebar.classList.remove('open');
+        });
     }
 });
 </script>
