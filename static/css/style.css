@@ -2229,3 +2229,16 @@ footer.footer {
     right: 0; /* Выезжает на экран */
 }
 
+.sold-badge {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--grey-2);
+    color: var(--grey-1);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: default;
+    text-align: center;
+}

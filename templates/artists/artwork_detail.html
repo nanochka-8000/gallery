@@ -77,7 +77,11 @@
             {% endif %}
 
             <div class="qr-info">
-                <button class="inquiry-btn" onclick="openContactModal()">Узнать о покупке &rarr;</button>
+                {% if artwork.is_sold %}
+                    <div class="sold-badge">Продано</div>
+                {% else %}
+                    <button class="inquiry-btn" onclick="openContactModal()">Узнать о покупке &rarr;</button>
+                {% endif %}
             </div>
         </div>
     </div>

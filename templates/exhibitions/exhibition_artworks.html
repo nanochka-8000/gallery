@@ -39,16 +39,19 @@
                 {% if artwork.dimensions %}<p class="exh-artwork-specs">{{ artwork.dimensions }}</p>{% endif %}
 
                 <!-- Кнопка запроса -->
-                <button class="btn-solid btn-enquire-hover js-add-to-enquiry"
-                        data-id="{{ artwork.id }}"
-                        data-title="{{ artwork.title }}"
-                        data-artist="{{ artwork.authors }}"
-                        data-image="{% if artwork.image %}{{ artwork.image.url }}{% endif %}"
-                        style="position:relative; opacity:1; visibility:visible; transform:none; max-width: 200px; margin-top: 24px;">
-                    Оставить запрос
-                </button>
+                {% if artwork.is_sold %}
+                    <div class="sold-badge" style="margin-top: 24px;">Продано</div>
+                {% else %}
+                    <button class="btn-solid btn-enquire-hover js-add-to-enquiry"
+                            data-id="{{ artwork.id }}"
+                            data-title="{{ artwork.title }}"
+                            data-artist="{{ artwork.authors }}"
+                            data-image="{% if artwork.image %}{{ artwork.image.url }}{% endif %}"
+                            style="position:relative; opacity:1; visibility:visible; transform:none; max-width: 200px; margin-top: 24px;">
+                        Оставить запрос
+                    </button>
+                {% endif %}
             </div>
-
         </div>
         {% empty %}
         <p class="empty-state" style="text-align: center;">К этой выставке пока не привязаны работы.</p>

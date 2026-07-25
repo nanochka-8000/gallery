@@ -63,7 +63,7 @@
             <!-- Ограничиваем срез до 6 работ -->
             {% for artwork in exhibition.exhibition_artworks.all|slice:":6" %}
             <div class="petzel-card">
-                <a href="{% url 'exhibition_artworks' exhibition.id %}#artwork-{{ artwork.id }}" class="petzel-card-link">
+                <a href="{% url 'shop_detail' artwork.id %}" class="petzel-card-link">
                     <div class="petzel-image-wrapper">
                         {% if artwork.image %}
                             <img src="{{ artwork.image.url }}" alt="{{ artwork.title }}">

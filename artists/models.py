@@ -42,7 +42,9 @@ class WorkshopMember(models.Model):
 
 class Artwork(models.Model):
     title = models.CharField(max_length=200)
+    code = models.CharField(max_length=50, blank=True, verbose_name='Код')
     is_published = models.BooleanField(default=True, verbose_name='Показывать на сайте')
+    is_sold = models.BooleanField(default=False, verbose_name='Продано')
     exhibition = models.ForeignKey(
         'exhibitions.Exhibition',
         on_delete=models.SET_NULL,
