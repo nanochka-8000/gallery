@@ -27,6 +27,17 @@ class Workshop(models.Model):
     def __str__(self):
         return self.name
 
+class Tag(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название тега')
+    slug = models.SlugField(unique=True, verbose_name='URL тега (на латинице, без пробелов)')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+
 
 class WorkshopMember(models.Model):
     workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE, related_name='members')
@@ -62,7 +73,7 @@ class Artwork(models.Model):
     series = models.ForeignKey('Series', on_delete=models.SET_NULL,
                                blank=True, null=True, related_name='artworks',
                                verbose_name='Серия')
-
+    tags = models.ManyToManyField(Tag, blank=True, related_name='artworks', verbose_name='Теги')
     designed_by = models.ManyToManyField(Artist, blank=True, related_name='designed_artworks')
     made_by = models.ManyToManyField(Artist, blank=True, related_name='made_artworks')
     designed_by_workshops = models.ManyToManyField(Workshop, blank=True, related_name='designed_artworks')

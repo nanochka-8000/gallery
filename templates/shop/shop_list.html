@@ -9,6 +9,20 @@
         <h1 class="section-label">В наличии</h1>
     </div>
 
+    <!-- БЛОК С ТЕГАМИ -->
+    <div class="shop-filters" style="padding: 0 48px; margin-bottom: 40px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <!-- Кнопка сброса фильтра -->
+        <a href="{% url 'shop_list' %}" class="filter-btn {% if not selected_tag %}filter-btn--active{% endif %}">Все работы</a>
+
+
+        {% for tag in tags %}
+            <a href="?tag={{ tag.slug }}" class="filter-btn {% if selected_tag == tag.slug %}filter-btn--active{% endif %}">
+                {{ tag.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <!-- СЕТКА ТОВАРОВ (остается без изменений) -->
     <div class="petzel-grid">
         {% for artwork in artworks %}
         <div class="petzel-card">
@@ -34,7 +48,7 @@
                 </div>
             </a>
 
-            <!-- Контейнер для кнопки (вынесен из ссылки) -->
+            <!-- Контейнер для кнопки -->
             <div class="petzel-btn-container">
                 <button class="btn-solid btn-enquire-hover js-add-to-enquiry"
                         data-id="{{ artwork.id }}"
