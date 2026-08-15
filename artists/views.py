@@ -1,19 +1,33 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from .models import Artist, Artwork, Workshop, WorkshopMember, Series
 
 
 def artist_list(request):
     artists = Artist.objects.filter(is_published=True).order_by('order')
     workshops = Workshop.objects.filter(is_published=True)
-    return render(request, 'artists/artist_list.html', {'artists': artists, 'workshops': workshops})
+    return render(request, 'artists/artist_list.html', {
+        'artists': artists,
+        'workshops': workshops,
+    })
 
 
 def artist_detail(request, pk):
     artist = get_object_or_404(Artist, pk=pk)
-    all_artworks = (artist.designed_artworks.filter(is_published=True) |
-                    artist.made_artworks.filter(is_published=True)).distinct()
-    series = artist.series.filter(is_published=True).distinct()
+
+    all_artworks = Artwork.objects.filter(
+        Q(designed_by=artist) | Q(made_by=artist),
+        is_published=True,
+    ).distinct()
+
+    # серии: либо напрямую привязаны к мастеру, либо содержат его работы
+    series = Series.objects.filter(
+        Q(artists=artist) | Q(artworks__in=all_artworks),
+        is_published=True,
+    ).distinct()
+
     standalone_artworks = all_artworks.filter(series__isnull=True)
+
     return render(request, 'artists/artist_detail.html', {
         'artist': artist,
         'series': series,
@@ -29,10 +43,19 @@ def artwork_detail(request, pk):
 def workshop_detail(request, pk):
     workshop = get_object_or_404(Workshop, pk=pk)
     members = workshop.members.filter(is_published=True)
-    all_artworks = (workshop.designed_artworks.filter(is_published=True) |
-                    workshop.made_artworks.filter(is_published=True)).distinct()
-    series = workshop.series.filter(is_published=True).distinct()
+
+    all_artworks = Artwork.objects.filter(
+        Q(designed_by_workshops=workshop) | Q(made_by_workshops=workshop),
+        is_published=True,
+    ).distinct()
+
+    series = Series.objects.filter(
+        Q(workshops=workshop) | Q(artworks__in=all_artworks),
+        is_published=True,
+    ).distinct()
+
     standalone_artworks = all_artworks.filter(series__isnull=True)
+
     return render(request, 'artists/workshop_detail.html', {
         'workshop': workshop,
         'members': members,

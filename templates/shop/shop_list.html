@@ -54,7 +54,8 @@
                         data-id="{{ artwork.id }}"
                         data-title="{{ artwork.title }}"
                         data-artist="{{ artwork.authors }}"
-                        data-image="{% if artwork.image %}{{ artwork.image.url }}{% endif %}">
+                        data-image="{% if artwork.image %}{{ artwork.image.url }}{% endif %}"
+                        data-code="{{ artwork.code }}">
                     Оставить запрос
                 </button>
             </div>

@@ -54,12 +54,11 @@
                         data-title="{{ artwork.title }}"
                         data-artist="{{ artwork.authors }}"
                         data-image="{% if artwork.image %}{{ artwork.image.url }}{% endif %}"
+                        data-code="{{ artwork.code }}"
                         style="width: auto; padding: 16px 32px;">
                     Оставить запрос &rarr;
                 </button>
 
-                <div class="shop-detail-note">
-                    Ответим в течение 24 часов
                 </div>
             {% endif %}
         </div>

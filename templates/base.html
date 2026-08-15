@@ -344,10 +344,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const itemsCountDisplay = document.getElementById('enquiry-items-count');
     const clearBtn = document.querySelector('.js-clear-enquiry');
 
-    // Массив для хранения выбранных ID
     let selectedArtworks = [];
 
-    // Открытие/закрытие боковой панели
     toggleBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -356,7 +354,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Добавление товара в лист
     addBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -364,33 +361,32 @@ document.addEventListener('DOMContentLoaded', function() {
             const title = this.getAttribute('data-title');
             const artist = this.getAttribute('data-artist');
             const image = this.getAttribute('data-image');
+            const code = this.getAttribute('data-code') || 'Без кода'; // ПОЛУЧАЕМ КОД ИЗ КНОПКИ
 
-            // Проверяем, нет ли уже этой работы в листе
             if (!selectedArtworks.find(item => item.id === id)) {
-                selectedArtworks.push({id, title, artist, image});
+                // СОХРАНЯЕМ КОД ВМЕСТЕ С ДАННЫМИ
+                selectedArtworks.push({id, title, artist, image, code});
                 updateEnquiryUI();
             }
 
-            // Открываем панель после добавления
             sidebar.classList.add('is-open');
             overlay.classList.add('is-open');
         });
     });
 
-    // Очистка листа
     clearBtn.addEventListener('click', () => {
         selectedArtworks = [];
         updateEnquiryUI();
     });
 
-    // Функция обновления визуальной части
     function updateEnquiryUI() {
         countDisplay.textContent = selectedArtworks.length;
         itemsCountDisplay.textContent = selectedArtworks.length + ' работ';
         const artworksInput = document.getElementById('artworksListInput');
+
         if (artworksInput) {
-            // Собираем названия всех работ через запятую
-            artworksInput.value = selectedArtworks.map(item => item.title).join(', ');
+            // ФОРМИРУЕМ СТРОКУ ДЛЯ ПИСЬМА С КОДОМ (например: Ширдак 1 (Код: FUR-1.5))
+            artworksInput.value = selectedArtworks.map(item => `${item.title} (Код: ${item.code})`).join('\n');
         }
 
         if (selectedArtworks.length === 0) {
@@ -398,7 +394,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             enquiryList.innerHTML = '';
             selectedArtworks.forEach(item => {
-                const imgHtml = item.image ? `<img src="${item.image}" alt="">` : `<div style="width:80px;height:80px;background:#eee;"></div>`;
+                const imgHtml = item.image ? `<img src="${item.image}" alt="">` : `<div style="width:80px;height:80px;background:var(--grey-3);"></div>`;
+
+                // ВЫВОДИМ ТОЛЬКО ФОТО, АВТОРА И НАЗВАНИЕ (без строчки с кодом)
                 enquiryList.innerHTML += `
                     <div class="enquiry-cart-item">
                         ${imgHtml}

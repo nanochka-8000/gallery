@@ -79,12 +79,15 @@ class Artwork(models.Model):
     designed_by_workshops = models.ManyToManyField(Workshop, blank=True, related_name='designed_artworks')
     made_by_workshops = models.ManyToManyField(Workshop, blank=True, related_name='made_artworks')
 
-    def __str__(self):
+    @property
+    def authors(self):
         designers = list(self.designed_by.values_list('name', flat=True))
         makers = list(self.made_by.values_list('name', flat=True))
         all_authors = designers + [m for m in makers if m not in designers]
-        authors_str = ", ".join(all_authors) if all_authors else "без автора"
-        return f"{self.title} — {authors_str}"
+        return ", ".join(all_authors) if all_authors else "без автора"
+
+    def __str__(self):
+        return f"{self.title} — {self.authors}"
 
 
 class ArtworkImage(models.Model):
